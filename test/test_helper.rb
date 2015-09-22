@@ -20,3 +20,12 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
   ActionDispatch::IntegrationTest.fixture_path = ActiveSupport::TestCase.fixture_path
   ActiveSupport::TestCase.fixtures :all
 end
+
+ActionController::Base.prepend_view_path File.dirname(__FILE__) + "/../app/views"
+
+def setup_test_fixture
+  @thing    = Thing.new name: 'Something'
+  @builder  = BootstrapForm::FormBuilder.new :thing, @thing, self, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10"
+  @template = @builder.instance_variable_get :@template
+  @template.stubs(:controller_name).returns('things')
+end

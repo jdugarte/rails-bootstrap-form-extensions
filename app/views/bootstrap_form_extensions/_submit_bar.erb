@@ -1,0 +1,36 @@
+<div class="form-group">
+  <div class='pull-left submitbar-left'>
+    <% if show_submit_button %>
+      <div class="btn-group dropup submitbar-submit-group">
+        <button type="submit" class="btn btn-primary submitbar-save"><%= submit_button_text %></button>
+        <% if show_submit_menu %>
+          <button type="button" class="btn btn-primary dropdown-toggle submitbar-next-action-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu submitbar-next-action-menu" role="menu">
+            <% if show_submit_and_dup_button %>
+              <li><button type="submit" name="next_action" class="btn-link submitbar-duplicate" value="duplicate"><%= submit_button_text %> and duplicate</button></li>
+            <% end %>
+            <% if show_submit_and_new_button %>
+              <li><button type="submit" name="next_action" class="btn-link submitbar-new" value="new"><%= submit_button_text %> and new</button></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+    <% extra_buttons.each do |text:, url:, options:| %>
+      <%= link_to text, url, options %>
+    <% end %>
+    <% if show_cancel_button %>
+      <%= link_to cancel_button_text, cancel_button_url, class: "btn btn-default submitbar-cancel", rel: "nofollow" %>
+    <% end %>
+  </div>
+  <% if right_buttons.any? %>
+    <div class='pull-right submitbar-right'>
+      <% right_buttons.each do |text:, url:, options:| %>
+        <%= link_to text, url, options %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
