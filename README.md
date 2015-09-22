@@ -80,7 +80,7 @@ BootstrapFormExtensions::SubmitBar.show_submit_menu = false
 
 ### Default partial
 
-This is the actual code of the default partial (located in app/views/bootstrap_form_extensions/_submit_bar.erb):
+This is the actual code of the default partial (located in app/views/bootstrap_form_extensions/_submit_bar.html.erb):
 
 ```erb
 <div class="form-group">
