@@ -10,7 +10,9 @@
 
 Add it to your Gemfile:
 
-`gem 'bootstrap_form_extensions'`
+```ruby
+gem 'bootstrap_form_extensions'
+```
 
 Then:
 
