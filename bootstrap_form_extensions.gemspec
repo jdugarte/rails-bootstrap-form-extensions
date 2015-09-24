@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = BootstrapFormExtensions::VERSION
   s.author      = "Jesús Dugarte"
   s.email       = "jdugarte@gmail.com"
-  s.homepage    = "http://github.com/jdugarte/rails-bootstrap-forms-extensions/"
+  s.homepage    = "http://github.com/jdugarte/rails-bootstrap-form-extensions/"
   s.summary     = "Specialized controls added to the bootstrap_form gem"
   s.description = ""
   s.license     = "MIT"

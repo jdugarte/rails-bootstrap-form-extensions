@@ -1,4 +1,4 @@
-# Rails Bootstrap Forms Extensions
+# Rails Bootstrap Form Extensions
 
 ## Requirements
 
@@ -22,7 +22,7 @@ Then require the CSS in your `application.css` file:
 
 ```css
 /*
- *= require rails_bootstrap_forms_extensions
+ *= require rails_bootstrap_form_extensions
  */
 ```
 
