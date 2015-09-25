@@ -18,7 +18,15 @@ Then:
 
 `bundle`
 
-Then require the CSS in your `application.css` file:
+Then require the JS in your `application.js` file:
+
+```js
+/*
+ *= require bootstrap_form_extensions
+ */
+```
+
+And require the CSS in your `application.css` file:
 
 ```css
 /*
