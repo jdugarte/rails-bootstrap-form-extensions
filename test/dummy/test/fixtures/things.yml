@@ -1,5 +1,8 @@
 one:
   name: Something
+  duration_in_seconds: 1
+  
 
 two:
   name: Anything
+  duration_in_seconds: 3600

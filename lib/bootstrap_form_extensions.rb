@@ -1,5 +1,6 @@
 require 'bootstrap_form/form_builder'
 require 'bootstrap_form_extensions/submit_bar'
+require 'bootstrap_form_extensions/timespan'
 
 module BootstrapFormExtensions
   module Rails
@@ -9,3 +10,4 @@ module BootstrapFormExtensions
 end
 
 BootstrapForm::FormBuilder.send :include, BootstrapFormExtensions::SubmitBar
+BootstrapForm::FormBuilder.send :include, BootstrapFormExtensions::Timespan

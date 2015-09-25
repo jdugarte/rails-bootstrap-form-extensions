@@ -125,6 +125,52 @@ This is the actual code of the default partial (located in app/views/bootstrap_f
 
 You can use it as a template to create your own partial(s).
 
+## Timespan
+
+Having, for example, a column `duration_in_seconds`, doing this:
+
+```erb
+<%= f.timespan :duration_in_seconds %>
+```
+
+generates this html:
+
+```html
+<span data-timespan="true">
+  <input class="timespan-seconds" type="hidden" value="3600" name="thing[duration_in_seconds]" id="thing_duration_in_seconds" />
+  <div class="form-group">
+    <input type="text" name="duration_quantity" id="duration_quantity" value="1" size="5" class="form-control timespan-quantity" />
+  </div>
+  &nbsp;
+  <div class="form-group">
+    <select name="duration_unit" id="duration_unit" class="form-control timespan-unit">
+      <option selected="selected" value="1">seconds</option>
+      <option value="60">minutes</option>
+      <option value="3600">hours</option>
+      <option value="86400">days</option>
+      <option value="604800">weeks</option>
+      <option value="18144000">months</option>
+    </select>
+  </div>
+</span>
+```
+
+### Configuration
+
+The following arguments can be used to configure the timespan:
+
+| Argument | Description | Default |
+| -------- |-------------| --------|
+| units            | The list of units that will be displayed       | [ :seconds, :minutes, :hours, :days, :weeks, :months ] |
+| quantity_options | html options to be added to the quantity input | {} |
+| unit_options     | html options to be added to the unit select    | {} |
+
+You can also change the default of `units` by invoking it on the BootstrapFormExtensions::Timespan, for example in an initializer file, like this:
+
+```ruby
+BootstrapFormExtensions::Timespan.units = [ :hours, :days ]
+```
+
 ## Contributing
 
 Here's a quick guide for contributing:
