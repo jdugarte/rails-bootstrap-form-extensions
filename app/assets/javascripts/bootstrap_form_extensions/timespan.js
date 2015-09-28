@@ -6,7 +6,7 @@
 
   var Timespan = function (element) {
     this.$container = $(element)
-    this.$container.on('change', '.timespan-quantity, .timespan-unit', this.updateSeconds)
+    this.$container.on('change.bsfe.timespan.data-api', '.timespan-quantity, .timespan-unit', this.updateSeconds)
   }
 
   Timespan.VERSION = '0.0.3'
