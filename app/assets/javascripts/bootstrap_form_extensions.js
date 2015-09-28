@@ -36,7 +36,7 @@
   // =============================
 
   function Plugin() {
-    return this.each(function () {
+    return $(this).each(function () {
       var $this = $(this)
       var data  = $this.data('bsfe.arrayedfield')
 
@@ -64,7 +64,7 @@
 
   $(window).on('load', function () {
     $('[data-arrayed-field]').each(function () {
-      Plugin.call($(this))
+      Plugin.call(this)
     })
   })
 
@@ -98,7 +98,7 @@
   // =============================
 
   function Plugin() {
-    return this.each(function () {
+    return $(this).each(function () {
       var $this = $(this)
       var data  = $this.data('bsfe.timespan')
 
@@ -126,7 +126,7 @@
 
   $(window).on('load', function () {
     $('[data-timespan]').each(function () {
-      Plugin.call($(this))
+      Plugin.call(this)
     })
   })
 
