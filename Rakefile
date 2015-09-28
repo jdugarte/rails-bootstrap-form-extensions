@@ -15,10 +15,6 @@ RDoc::Task.new(:rdoc) do |rdoc|
 end
 
 
-
-
-
-
 Bundler::GemHelper.install_tasks
 
 require 'rake/testtask'
@@ -30,9 +26,7 @@ Rake::TestTask.new(:test) do |t|
   t.verbose = false
 end
 
-
 task default: :test
-
 
 
 desc "Create bootstrap_form_extensions.js, concatenating all javascript files"
@@ -45,3 +39,8 @@ task :concatjs do
     end
   end
 end
+
+
+require 'jasmine'
+ENV['JASMINE_CONFIG_PATH'] = 'test/javascripts/support/jasmine.yml'
+load 'jasmine/tasks/jasmine.rake'
