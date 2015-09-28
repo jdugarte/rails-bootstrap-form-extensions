@@ -35,7 +35,7 @@
   // ARRAYED FIELD PLUGIN DEFINITION
   // =============================
 
-  function Plugin(option) {
+  function Plugin() {
     return this.each(function () {
       var $this = $(this)
       var data  = $this.data('bsfe.arrayedfield')
