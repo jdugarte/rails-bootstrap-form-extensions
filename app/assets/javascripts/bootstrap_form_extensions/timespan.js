@@ -4,17 +4,17 @@
   // TIMESPAN CLASS DEFINITION
   // ============================
 
-  var Timespan = function (el) {
-    $(el).on('change', '.timespan-quantity, .timespan-unit', this.updateSeconds)
+  var Timespan = function (element) {
+    this.$container = $(element)
+    this.$container.on('change', '.timespan-quantity, .timespan-unit', this.updateSeconds)
   }
 
   Timespan.VERSION = '0.0.3'
 
   Timespan.prototype.updateSeconds = function (e) {
-    var $this    = $(this).closest('span[data-timespan]')
-    var hidden   = $this.find('.timespan-seconds')
-    var quantity = $this.find('.timespan-quantity')
-    var unit     = $this.find('.timespan-unit')
+    var hidden   = this.$container.find('.timespan-seconds')
+    var quantity = this.$container.find('.timespan-quantity')
+    var unit     = this.$container.find('.timespan-unit')
     var seconds  = +quantity.val() * +unit.val()
 
     hidden.val(seconds)
