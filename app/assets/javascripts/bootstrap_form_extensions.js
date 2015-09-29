@@ -2,7 +2,7 @@
   'use strict';
 
   // ARRAYED FIELD CLASS DEFINITION
-  // ============================
+  // ==============================
 
   var ArrayedField = function (element) {
     var $container = $(element)
@@ -33,7 +33,7 @@
 
 
   // ARRAYED FIELD PLUGIN DEFINITION
-  // =============================
+  // ===============================
 
   function Plugin() {
     return $(this).each(function () {
@@ -51,7 +51,7 @@
 
 
   // ARRAYED FIELD NO CONFLICT
-  // =======================
+  // =========================
 
   $.fn.arrayedfield.noConflict = function () {
     $.fn.arrayedfield = old
@@ -60,7 +60,7 @@
 
 
   // ARRAYED FIELD DATA-API
-  // ====================
+  // ======================
 
   $(window).on('load', function () {
     $('[data-arrayed-field]').each(function () {
@@ -75,7 +75,7 @@
   'use strict';
 
   // TIMESPAN CLASS DEFINITION
-  // ============================
+  // =========================
 
   var Timespan = function (element) {
     this.$container = $(element)
@@ -95,7 +95,7 @@
 
 
   // TIMESPAN PLUGIN DEFINITION
-  // =============================
+  // ==========================
 
   function Plugin() {
     return $(this).each(function () {
@@ -113,7 +113,7 @@
 
 
   // TIMESPAN NO CONFLICT
-  // =======================
+  // ====================
 
   $.fn.timespan.noConflict = function () {
     $.fn.timespan = old
@@ -122,7 +122,7 @@
 
 
   // TIMESPAN DATA-API
-  // ====================
+  // =================
 
   $(window).on('load', function () {
     $('[data-timespan]').each(function () {

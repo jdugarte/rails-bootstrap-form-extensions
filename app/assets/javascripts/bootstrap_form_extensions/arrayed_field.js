@@ -2,7 +2,7 @@
   'use strict';
 
   // ARRAYED FIELD CLASS DEFINITION
-  // ============================
+  // ==============================
 
   var ArrayedField = function (element) {
     var $container = $(element)
@@ -33,7 +33,7 @@
 
 
   // ARRAYED FIELD PLUGIN DEFINITION
-  // =============================
+  // ===============================
 
   function Plugin() {
     return $(this).each(function () {
@@ -51,7 +51,7 @@
 
 
   // ARRAYED FIELD NO CONFLICT
-  // =======================
+  // =========================
 
   $.fn.arrayedfield.noConflict = function () {
     $.fn.arrayedfield = old
@@ -60,7 +60,7 @@
 
 
   // ARRAYED FIELD DATA-API
-  // ====================
+  // ======================
 
   $(window).on('load', function () {
     $('[data-arrayed-field]').each(function () {

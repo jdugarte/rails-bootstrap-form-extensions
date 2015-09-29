@@ -2,7 +2,7 @@
   'use strict';
 
   // TIMESPAN CLASS DEFINITION
-  // ============================
+  // =========================
 
   var Timespan = function (element) {
     this.$container = $(element)
@@ -22,7 +22,7 @@
 
 
   // TIMESPAN PLUGIN DEFINITION
-  // =============================
+  // ==========================
 
   function Plugin() {
     return $(this).each(function () {
@@ -40,7 +40,7 @@
 
 
   // TIMESPAN NO CONFLICT
-  // =======================
+  // ====================
 
   $.fn.timespan.noConflict = function () {
     $.fn.timespan = old
@@ -49,7 +49,7 @@
 
 
   // TIMESPAN DATA-API
-  // ====================
+  // =================
 
   $(window).on('load', function () {
     $('[data-timespan]').each(function () {
