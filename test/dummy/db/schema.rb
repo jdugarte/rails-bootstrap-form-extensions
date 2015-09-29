@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924203053) do
+ActiveRecord::Schema.define(version: 20150929213249) do
 
   create_table "things", force: :cascade do |t|
     t.string  "name"
     t.integer "duration_in_seconds"
+    t.text    "urls"
   end
 
 end
