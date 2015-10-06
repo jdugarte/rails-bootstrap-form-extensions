@@ -13,3 +13,7 @@
 #   config.prevent_phantom_js_auto_install = true
 #end
 #
+
+Jasmine.configure do |config|
+  config.show_console_log = true
+end
