@@ -190,6 +190,7 @@ Here's a quick guide for contributing:
 ```
 $ bundle exec rake -f test/dummy/Rakefile db:create db:migrate RAILS_ENV=test
 $ bundle exec rake
+$ bundle exec rake jasmine:ci
 ```
 
 3. Add tests for your change.
