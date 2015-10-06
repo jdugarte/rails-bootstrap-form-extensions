@@ -5,16 +5,17 @@
   // =========================
 
   var Timespan = function (element) {
-    this.$container = $(element)
-    this.$container.on('change.bsfe.timespan.data-api', '.timespan-quantity, .timespan-unit', this.updateSeconds.bind(this))
+    var $container = $(element)
+    $container.on('change.bsfe.timespan.data-api', '.timespan-quantity, .timespan-unit', this.updateSeconds)
   }
 
   Timespan.VERSION = '0.0.3'
 
   Timespan.prototype.updateSeconds = function (e) {
-    var hidden   = this.$container.find('.timespan-seconds')
-    var quantity = this.$container.find('.timespan-quantity')
-    var unit     = this.$container.find('.timespan-unit')
+    var $container = $(this).closest('[data-timespan]')
+    var hidden   = $container.find('.timespan-seconds')
+    var quantity = $container.find('.timespan-quantity')
+    var unit     = $container.find('.timespan-unit')
     var seconds  = +quantity.val() * +unit.val()
 
     hidden.val(seconds)
