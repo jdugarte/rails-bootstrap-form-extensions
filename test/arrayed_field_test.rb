@@ -22,6 +22,11 @@ class ArrayedFieldTest < ActionView::TestCase
     assert_equal expected, @builder.arrayed_text_field(:nonexistent)
   end
 
+  test "ArrayedField, with non-array attribute, assumes the value is an empty array" do
+    expected = '<div class="form-group"><label class="control-label col-sm-2 required" for="thing_name">Name</label><div class="col-sm-10"><div data-arrayed-field="true"><div class="blueprint-for-arrayed-field" style="display:none;"><div class="row voffset1"><div class="col-sm-11"><input type="text" id="" class="form-control" data-name="thing[name][]" /></div><div class="col-sm-1"><a class="btn btn-default remove-arrayed-field-row" href="javascript:void(0);"><i class=" glyphicon glyphicon-trash"></i></a></div></div></div><div class="arrayed-field-rows"></div><div class="row voffset1"><div class="col-sm-12"><a class="btn btn-default add-arrayed-field-row" href="javascript:void(0);"><i class=" glyphicon glyphicon-plus"></i></a></div></div></div></div></div>'
+    assert_equal expected, @builder.arrayed_text_field(:name)
+  end
+
   test "pass options to the form group in the an ArrayedField" do
     @output_buffer = @builder.arrayed_text_field(:list, wrapper_class: 'extra-class')
     assert_select 'div.form-group.extra-class'

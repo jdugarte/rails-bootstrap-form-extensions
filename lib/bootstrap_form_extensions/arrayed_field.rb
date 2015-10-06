@@ -93,6 +93,7 @@ module BootstrapFormExtensions
       add_button = content_tag :div, add_button, class: 'row voffset1'
 
       rows = object.send(method) rescue []
+      rows = [] unless rows.is_a? Array
       rows = rows.inject(''.html_safe) { |content, value| content << row_builder_block.call(value) }
       rows = content_tag :div, rows, class: 'arrayed-field-rows'
 
