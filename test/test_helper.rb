@@ -24,7 +24,11 @@ end
 ActionController::Base.prepend_view_path File.dirname(__FILE__) + "/../app/views"
 
 def setup_test_fixture
-  @thing    = Thing.new name: 'Something', duration_in_seconds: 3600, urls: [ 'www.example1.com', 'www.example2.com' ], list: [ 'One', 'Two' ]
+  @thing    = Thing.new name: 'Something',
+                        duration_in_seconds: 3600,
+                        urls: [ 'www.example1.com', 'www.example2.com' ],
+                        list: [ 'One', 'Two' ],
+                        variables: [ { name: 'var1', value: 1 }, { name: 'var2', value: 2 } ]
   @builder  = BootstrapForm::FormBuilder.new :thing, @thing, self, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10"
   @template = @builder.instance_variable_get :@template
   @template.stubs(:controller_name).returns('things')
