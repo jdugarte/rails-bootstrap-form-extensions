@@ -179,6 +179,73 @@ You can also change the default of `units` by invoking it on the BootstrapFormEx
 BootstrapFormExtensions::Timespan.units = [ :hours, :days ]
 ```
 
+## ArrayedField
+
+ArrayedField provides three helpers:
+
+### arrayed_text_field
+
+Given a column that holds an array of texts, this helper adds a multiple line text inputs:
+
+```erb
+<%= f.arrayed_text_field :lists %>
+```
+
+It accepts any option you'd pass to a form_group. If the column provided doesn't exist, or is not an array, it assumes an empty array as the value.
+
+### arrayed_url_field
+
+Given a column that holds an array of URLs, this helper adds a multiple line url inputs:
+
+```erb
+<%= f.arrayed_url_field :urls %>
+```
+
+It accepts any option you'd pass to a form_group. If the column provided doesn't exist, or is not an array, it assumes an empty array as the value.
+
+### arrayed_json_field
+
+Given a column that holds an array of hashes, this helper adds a multiple line, multiple field, text/select inputs:
+
+```erb
+<%= f.arrayed_json_field :variables, [ :name, :value ] %>
+```
+
+The generated html contains multiple lines like this:
+
+```html
+<div class="col-sm-2">
+  <input type="text" name="thing[variables][][name]" class="form-control" placeholder="name" />
+</div>
+<div class="col-sm-2">
+  <input type="text" name="thing[variables][][value]" class="form-control" placeholder="value" />
+</div>
+```
+
+The list of fields in the hash can be customized further:
+
+```erb
+<%= f.arrayed_json_field :variables, [ { name: { type: :select, options: [ [ "One", "var1" ], [ "Two", "var2" ] ] } }, :value ] %>
+```
+
+`type` can be `:text` or `:select`.
+
+The generated html for each element of the array would look something like this:
+
+```html
+<div class="col-sm-2">
+  <select class="form-control">
+    <option value="var1">One</option>
+    <option value="var2">Two</option>
+  </select>
+</div>
+<div class="col-sm-2">
+  <input class="form-control" name="thing[variables][][value]" placeholder="value" type="text">
+</div>
+```
+
+It accepts any option you'd pass to a form_group. If the column provided doesn't exist, or is not an array, it assumes an empty array as the value.
+
 ## Contributing
 
 Here's a quick guide for contributing:
