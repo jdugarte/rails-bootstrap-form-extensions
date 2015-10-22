@@ -5,22 +5,21 @@
   // ==============================
 
   var ArrayedField = function (element) {
-    var $container = $(element)
-    $container.on('click.bsfe.arrayedfield.data-api', '.add-arrayed-field-row', this.addRow)
-    $container.on('click.bsfe.arrayedfield.data-api', '.remove-arrayed-field-row', this.removeRow)
+    this.$container = $(element)
+    this.$container.on('click.bsfe.arrayedfield.data-api', '.add-arrayed-field-row', this.addRow.bind(this))
+    this.$container.on('click.bsfe.arrayedfield.data-api', '.remove-arrayed-field-row', this.removeRow.bind(this))
   }
 
   ArrayedField.VERSION = '0.0.4'
 
   ArrayedField.prototype.addRow = function (event) {
-    var $container = $(this).closest('[data-arrayed-field]')
-    var blueprint = $container.find(".blueprint-for-arrayed-field > .row").clone(true)
+    var blueprint = this.$container.find(".blueprint-for-arrayed-field > .row").clone(true)
     blueprint.find('[data-name]').each(function (i, field) {
       $(field)
         .attr('name', $(field).data('name'))
         .removeAttr('data-name')
     })
-    blueprint.appendTo($container.find(".arrayed-field-rows"))
+    blueprint.appendTo(this.$container.find(".arrayed-field-rows"))
     blueprint.trigger("added.bsfe.arrayedfield")
   }
 
@@ -78,17 +77,16 @@
   // =========================
 
   var Timespan = function (element) {
-    var $container = $(element)
-    $container.on('change.bsfe.timespan.data-api', '.timespan-quantity, .timespan-unit', this.updateSeconds)
+    this.$container = $(element)
+    this.$container.on('change.bsfe.timespan.data-api', '.timespan-quantity, .timespan-unit', this.updateSeconds.bind(this))
   }
 
   Timespan.VERSION = '0.0.3'
 
   Timespan.prototype.updateSeconds = function (e) {
-    var $container = $(this).closest('[data-timespan]')
-    var hidden   = $container.find('.timespan-seconds')
-    var quantity = $container.find('.timespan-quantity')
-    var unit     = $container.find('.timespan-unit')
+    var hidden   = this.$container.find('.timespan-seconds')
+    var quantity = this.$container.find('.timespan-quantity')
+    var unit     = this.$container.find('.timespan-unit')
     var seconds  = +quantity.val() * +unit.val()
 
     hidden.val(seconds)
