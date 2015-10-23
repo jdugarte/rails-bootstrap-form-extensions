@@ -324,6 +324,107 @@
 <p>It accepts any option you'd pass to a form_group. If the column provided doesn't exist, or is not an array, it assumes an empty array as the value.</p>
 
 <h2>
+<a id="scheduler" class="anchor" href="#scheduler" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scheduler</h2>
+
+<p>This widget creates a grid of days and hours to choose a schedule. Called like this:</p>
+
+<div class="highlight highlight-text-html-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s1"> f.scheduler <span class="pl-c1">:schedule</span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span></pre></div>
+
+<p>generates this:</p>
+
+<p><img src="https://raw.githubusercontent.com/jdugarte/rails-bootstrap-form-extensions/gh-pages/images/scheduler%20-%20badge%20-%20partial%20selection.png" alt="scheduler - badge"></p>
+
+<p>This grid reflects the schedule selected. Clicking on the grid brings up the schedule editor:</p>
+
+<p><img src="https://raw.githubusercontent.com/jdugarte/rails-bootstrap-form-extensions/gh-pages/images/scheduler%20-%20editor%20-%20partial%20selection.png" alt="scheduler - editor"></p>
+
+<p>The days and hours headers are clickable, as well as each cell, to allow any custom selection.</p>
+
+<h3>
+<a id="configuration-2" class="anchor" href="#configuration-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h3>
+
+<p>The following arguments can be used to configure the scheduler:</p>
+
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>Label text</td>
+<td>Attribute's name</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="model" class="anchor" href="#model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Model</h3>
+
+<p>This control expects the attribute to be serialized like this:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-c"># Migration:</span>
+
+<span class="pl-k">class</span> <span class="pl-en">AddSchedulerField<span class="pl-e"> &lt; ActiveRecord::Migration</span></span>
+  <span class="pl-k">def</span> <span class="pl-en">change</span>
+    add_column <span class="pl-c1">:things</span>, <span class="pl-c1">:schedule</span>, <span class="pl-c1">:text</span>
+  <span class="pl-k">end</span>
+<span class="pl-k">end</span>
+
+<span class="pl-c"># Model</span>
+
+<span class="pl-k">class</span> <span class="pl-en">Thing<span class="pl-e"> &lt; ActiveRecord::Base</span></span>
+  ...
+  serialize <span class="pl-c1">:schedule</span>, <span class="pl-c1">BootstrapFormExtensions</span>::<span class="pl-c1">Scheduler</span>.serializer
+  ...
+<span class="pl-k">end</span></pre></div>
+
+<p>This will serialize the column to yaml. If you're using an array column (e.g. PostgreSQL), you could do:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-c"># Migration:</span>
+
+<span class="pl-k">class</span> <span class="pl-en">AddSchedulerField<span class="pl-e"> &lt; ActiveRecord::Migration</span></span>
+  <span class="pl-k">def</span> <span class="pl-en">change</span>
+    add_column <span class="pl-c1">:things</span>, <span class="pl-c1">:schedule</span>, <span class="pl-c1">:text</span>, <span class="pl-c1">array:</span> <span class="pl-c1">true</span>, <span class="pl-c1">default:</span> []
+  <span class="pl-k">end</span>
+<span class="pl-k">end</span>
+
+<span class="pl-c"># Model</span>
+
+<span class="pl-k">class</span> <span class="pl-en">Thing<span class="pl-e"> &lt; ActiveRecord::Base</span></span>
+  ...
+  serialize <span class="pl-c1">:schedule</span>, <span class="pl-c1">BootstrapFormExtensions</span>::<span class="pl-c1">Scheduler</span>.serializer <span class="pl-c1">to:</span> <span class="pl-c1">:array</span>
+  ...
+<span class="pl-k">end</span></pre></div>
+
+<h4>
+<a id="default-selection" class="anchor" href="#default-selection" aria-hidden="true"><span class="octicon octicon-link"></span></a>Default selection</h4>
+
+<p>Each hour in the schedule grid is selected by default:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">&gt;</span> thing <span class="pl-k">=</span> <span class="pl-c1">Thing</span>.<span class="pl-k">new</span> <span class="pl-c1">schedule:</span> []
+<span class="pl-k">&gt;</span> thing.schedule
+=&gt; [[<span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>, <span class="pl-c1">true</span>], ...]</pre></div>
+
+<p>You can change this default in the model:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">class</span> <span class="pl-en">Thing<span class="pl-e"> &lt; ActiveRecord::Base</span></span>
+  ...
+  serialize <span class="pl-c1">:schedule</span>, <span class="pl-c1">BootstrapFormExtensions</span>::<span class="pl-c1">Scheduler</span>.serializer <span class="pl-c1">default_selection:</span> <span class="pl-c1">false</span>
+  ...
+<span class="pl-k">end</span></pre></div>
+
+<p>This would result in:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">&gt;</span> thing <span class="pl-k">=</span> <span class="pl-c1">Thing</span>.<span class="pl-k">new</span> <span class="pl-c1">schedule:</span> []
+<span class="pl-k">&gt;</span> thing.schedule
+=&gt; [[<span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>], ...]</pre></div>
+
+<h2>
 <a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
 
 <p>Here's a quick guide for contributing:</p>
