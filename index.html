@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Rails Bootstrap Form Extensions by jdugarte</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Rails Bootstrap Form Extensions</h1>
+      <h2 class="project-tagline">Specialized controls added to the bootstrap_form gem</h2>
+      <a href="https://github.com/jdugarte/rails-bootstrap-form-extensions" class="btn">View on GitHub</a>
+      <a href="https://github.com/jdugarte/rails-bootstrap-form-extensions/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/jdugarte/rails-bootstrap-form-extensions/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="rails-bootstrap-form-extensions" class="anchor" href="#rails-bootstrap-form-extensions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rails Bootstrap Form Extensions</h1>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>Ruby 2.0+</li>
+<li>Rails 4.0+</li>
+<li>Twitter Bootstrap 3.0+</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Add it to your Gemfile:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">gem</span> <span class="pl-s"><span class="pl-pds">'</span>bootstrap_form_extensions<span class="pl-pds">'</span></span></pre></div>
+
+<p>Then:</p>
+
+<p><code>bundle</code></p>
+
+<p>Then require the JS in your <code>application.js</code> file:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">/*</span>
+<span class="pl-c"> *= require bootstrap_form_extensions</span>
+<span class="pl-c"> */</span></pre></div>
+
+<p>And require the CSS in your <code>application.css</code> file:</p>
+
+<div class="highlight highlight-source-css"><pre><span class="pl-c">/*</span>
+<span class="pl-c"> *= require rails_bootstrap_form_extensions</span>
+<span class="pl-c"> */</span></pre></div>
+
+<h2>
+<a id="submitbar" class="anchor" href="#submitbar" aria-hidden="true"><span class="octicon octicon-link"></span></a>SubmitBar</h2>
+
+<p>Using all the default arguments, doing this:</p>
+
+<div class="highlight highlight-text-html-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s1"> f.submit_bar </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span></pre></div>
+
+<p>generates a form group, with two buttons: Save (a dropdown menu, that includes 'Save and duplicate', and 'Save and new' options), and Cancel:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-group<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">'</span>pull-left submitbar-left<span class="pl-pds">'</span></span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btn-group dropup submitbar-submit-group<span class="pl-pds">"</span></span>&gt;
+      &lt;<span class="pl-ent">button</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>submit<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btn btn-primary submitbar-save<span class="pl-pds">"</span></span>&gt;Save&lt;/<span class="pl-ent">button</span>&gt;
+      &lt;<span class="pl-ent">button</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>button<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btn btn-primary dropdown-toggle submitbar-next-action-toggle<span class="pl-pds">"</span></span> <span class="pl-e">data-toggle</span>=<span class="pl-s"><span class="pl-pds">"</span>dropdown<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">span</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>caret<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">span</span>&gt;
+        &lt;<span class="pl-ent">span</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>sr-only<span class="pl-pds">"</span></span>&gt;Toggle Dropdown&lt;/<span class="pl-ent">span</span>&gt;
+      &lt;/<span class="pl-ent">button</span>&gt;
+      &lt;<span class="pl-ent">ul</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>dropdown-menu submitbar-next-action-menu<span class="pl-pds">"</span></span> <span class="pl-e">role</span>=<span class="pl-s"><span class="pl-pds">"</span>menu<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">li</span>&gt;&lt;<span class="pl-ent">button</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>submit<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>next_action<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btn-link submitbar-duplicate<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>duplicate<span class="pl-pds">"</span></span>&gt;Save and duplicate&lt;/<span class="pl-ent">button</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;
+        &lt;<span class="pl-ent">li</span>&gt;&lt;<span class="pl-ent">button</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>submit<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>next_action<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btn-link submitbar-new<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>new<span class="pl-pds">"</span></span>&gt;Save and new&lt;/<span class="pl-ent">button</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;
+      &lt;/<span class="pl-ent">ul</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;
+    &lt;<span class="pl-ent">a</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btn btn-default submitbar-cancel<span class="pl-pds">"</span></span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>nofollow<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>/things<span class="pl-pds">"</span></span>&gt;Cancel&lt;/<span class="pl-ent">a</span>&gt;
+  &lt;/<span class="pl-ent">div</span>&gt;
+&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<h3>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h3>
+
+<p>The following arguments can be used to configure the submit bar:</p>
+
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>show_submit_button</td>
+<td>Show the Save button</td>
+<td>true</td>
+</tr>
+<tr>
+<td>submit_button_text</td>
+<td>Text used in the save button</td>
+<td>'Save'</td>
+</tr>
+<tr>
+<td>show_submit_menu</td>
+<td>Show the dropdown menu on the save button</td>
+<td>true</td>
+</tr>
+<tr>
+<td>show_submit_and_dup_button</td>
+<td>Show a 'Save and duplicate' option in the dropdown submit menu. The 'Save' text is affected by the submit_button_text argument</td>
+<td>true</td>
+</tr>
+<tr>
+<td>show_submit_and_new_button</td>
+<td>Show a 'Save and new' option in the dropdown submit menu. The 'Save' text is affected by the submit_button_text argument</td>
+<td>true</td>
+</tr>
+<tr>
+<td>show_cancel_button</td>
+<td>Show the Cancel button</td>
+<td>true</td>
+</tr>
+<tr>
+<td>cancel_button_text</td>
+<td>Text used in the cancel button</td>
+<td>'Cancel'</td>
+</tr>
+<tr>
+<td>cancel_button_url</td>
+<td>URL used in the cancel button</td>
+<td>If the form object is a persisted ActiveRecord instance, the url to the show action; if not, the index action. If none of these path exit, then it uses 'javascript:history.back();'</td>
+</tr>
+<tr>
+<td>extra_buttons</td>
+<td>An array of hashes with the definition of the extra buttons to be added between the submit and cancel buttons. The options should include at least :text and :url for the button. Anything else is passed as html options to the button</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>right_buttons</td>
+<td>An array of hashes with the definition of the extra buttons to be added on the right side of the submit bar. The options should include at least :text and :url for the button. Anything else is passed as html options to the button</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>partial</td>
+<td>Partial template used to render the submit bar</td>
+<td>See <em>Default partial</em> below for details</td>
+</tr>
+</tbody>
+</table>
+
+<p>You can also change the default of <code>partial</code>, <code>show_submit_button</code>, <code>submit_button_text</code>, <code>show_submit_menu</code>, <code>show_submit_and_dup_button</code>, <code>show_submit_and_new_button</code>, <code>show_cancel_button</code>, <code>cancel_button_text</code>, or <code>back_button_text</code>, by invoking them on the BootstrapFormExtensions::SubmitBar, for example in an initializer file, like this:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-c1">BootstrapFormExtensions</span>::<span class="pl-c1">SubmitBar</span>.partial <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>layouts/form_footer<span class="pl-pds">'</span></span>
+<span class="pl-c1">BootstrapFormExtensions</span>::<span class="pl-c1">SubmitBar</span>.show_submit_menu <span class="pl-k">=</span> <span class="pl-c1">false</span></pre></div>
+
+<h3>
+<a id="default-partial" class="anchor" href="#default-partial" aria-hidden="true"><span class="octicon octicon-link"></span></a>Default partial</h3>
+
+<p>This is the actual code of the default partial (located in app/views/bootstrap_form_extensions/_submit_bar.html.erb):</p>
+
+<div class="highlight highlight-text-html-erb"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-group<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">'</span>pull-left submitbar-left<span class="pl-pds">'</span></span>&gt;
+    <span class="pl-pse">&lt;%</span><span class="pl-s1"> <span class="pl-k">if</span> show_submit_button </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+      &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btn-group dropup submitbar-submit-group<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">button</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>submit<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btn btn-primary submitbar-save<span class="pl-pds">"</span></span>&gt;<span class="pl-pse">&lt;%=</span><span class="pl-s1"> submit_button_text </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>&lt;/<span class="pl-ent">button</span>&gt;
+        <span class="pl-pse">&lt;%</span><span class="pl-s1"> <span class="pl-k">if</span> show_submit_menu </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+          &lt;<span class="pl-ent">button</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>button<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btn btn-primary dropdown-toggle submitbar-next-action-toggle<span class="pl-pds">"</span></span> <span class="pl-e">data-toggle</span>=<span class="pl-s"><span class="pl-pds">"</span>dropdown<span class="pl-pds">"</span></span>&gt;
+            &lt;<span class="pl-ent">span</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>caret<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">span</span>&gt;
+            &lt;<span class="pl-ent">span</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>sr-only<span class="pl-pds">"</span></span>&gt;Toggle Dropdown&lt;/<span class="pl-ent">span</span>&gt;
+          &lt;/<span class="pl-ent">button</span>&gt;
+          &lt;<span class="pl-ent">ul</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>dropdown-menu submitbar-next-action-menu<span class="pl-pds">"</span></span> <span class="pl-e">role</span>=<span class="pl-s"><span class="pl-pds">"</span>menu<span class="pl-pds">"</span></span>&gt;
+            <span class="pl-pse">&lt;%</span><span class="pl-s1"> <span class="pl-k">if</span> show_submit_and_dup_button </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+              &lt;<span class="pl-ent">li</span>&gt;&lt;<span class="pl-ent">button</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>submit<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>next_action<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btn-link submitbar-duplicate<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>duplicate<span class="pl-pds">"</span></span>&gt;<span class="pl-pse">&lt;%=</span><span class="pl-s1"> submit_button_text </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span> and duplicate&lt;/<span class="pl-ent">button</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;
+            <span class="pl-pse">&lt;%</span><span class="pl-s1"> <span class="pl-k">end</span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+            <span class="pl-pse">&lt;%</span><span class="pl-s1"> <span class="pl-k">if</span> show_submit_and_new_button </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+              &lt;<span class="pl-ent">li</span>&gt;&lt;<span class="pl-ent">button</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>submit<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>next_action<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btn-link submitbar-new<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>new<span class="pl-pds">"</span></span>&gt;<span class="pl-pse">&lt;%=</span><span class="pl-s1"> submit_button_text </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span> and new&lt;/<span class="pl-ent">button</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;
+            <span class="pl-pse">&lt;%</span><span class="pl-s1"> <span class="pl-k">end</span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+          &lt;/<span class="pl-ent">ul</span>&gt;
+        <span class="pl-pse">&lt;%</span><span class="pl-s1"> <span class="pl-k">end</span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+      &lt;/<span class="pl-ent">div</span>&gt;
+    <span class="pl-pse">&lt;%</span><span class="pl-s1"> <span class="pl-k">end</span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+    <span class="pl-pse">&lt;%</span><span class="pl-s1"> extra_buttons.each <span class="pl-k">do </span>|<span class="pl-smi">text</span>:, <span class="pl-smi">url</span>:, <span class="pl-smi">options</span>:| </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+      <span class="pl-pse">&lt;%=</span><span class="pl-s1"> link_to text, url, options </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+    <span class="pl-pse">&lt;%</span><span class="pl-s1"> <span class="pl-k">end</span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+    <span class="pl-pse">&lt;%</span><span class="pl-s1"> <span class="pl-k">if</span> show_cancel_button </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+      <span class="pl-pse">&lt;%=</span><span class="pl-s1"> link_to cancel_button_text, cancel_button_url, <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">"</span>btn btn-default submitbar-cancel<span class="pl-pds">"</span></span>, <span class="pl-c1">rel:</span> <span class="pl-s"><span class="pl-pds">"</span>nofollow<span class="pl-pds">"</span></span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+    <span class="pl-pse">&lt;%</span><span class="pl-s1"> <span class="pl-k">end</span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+  &lt;/<span class="pl-ent">div</span>&gt;
+  <span class="pl-pse">&lt;%</span><span class="pl-s1"> <span class="pl-k">if</span> right_buttons.any? </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">'</span>pull-right submitbar-right<span class="pl-pds">'</span></span>&gt;
+      <span class="pl-pse">&lt;%</span><span class="pl-s1"> right_buttons.each <span class="pl-k">do </span>|<span class="pl-smi">text</span>:, <span class="pl-smi">url</span>:, <span class="pl-smi">options</span>:| </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+        <span class="pl-pse">&lt;%=</span><span class="pl-s1"> link_to text, url, options </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+      <span class="pl-pse">&lt;%</span><span class="pl-s1"> <span class="pl-k">end</span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+    &lt;/<span class="pl-ent">div</span>&gt;
+  <span class="pl-pse">&lt;%</span><span class="pl-s1"> <span class="pl-k">end</span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span>
+&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<p>You can use it as a template to create your own partial(s).</p>
+
+<h2>
+<a id="timespan" class="anchor" href="#timespan" aria-hidden="true"><span class="octicon octicon-link"></span></a>Timespan</h2>
+
+<p>Having, for example, a column <code>duration_in_seconds</code>, doing this:</p>
+
+<div class="highlight highlight-text-html-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s1"> f.timespan <span class="pl-c1">:duration_in_seconds</span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span></pre></div>
+
+<p>generates this html:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">span</span> <span class="pl-e">data-timespan</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">input</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>timespan-seconds<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>hidden<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>3600<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>thing[duration_in_seconds]<span class="pl-pds">"</span></span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>thing_duration_in_seconds<span class="pl-pds">"</span></span> /&gt;
+  &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-group<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">input</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>duration_quantity<span class="pl-pds">"</span></span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>duration_quantity<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">size</span>=<span class="pl-s"><span class="pl-pds">"</span>5<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-control timespan-quantity<span class="pl-pds">"</span></span> /&gt;
+  &lt;/<span class="pl-ent">div</span>&gt;
+  <span class="pl-c1">&amp;nbsp;</span>
+  &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-group<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">select</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>duration_unit<span class="pl-pds">"</span></span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>duration_unit<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-control timespan-unit<span class="pl-pds">"</span></span>&gt;
+      &lt;<span class="pl-ent">option</span> <span class="pl-e">selected</span>=<span class="pl-s"><span class="pl-pds">"</span>selected<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span>&gt;seconds&lt;/<span class="pl-ent">option</span>&gt;
+      &lt;<span class="pl-ent">option</span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>60<span class="pl-pds">"</span></span>&gt;minutes&lt;/<span class="pl-ent">option</span>&gt;
+      &lt;<span class="pl-ent">option</span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>3600<span class="pl-pds">"</span></span>&gt;hours&lt;/<span class="pl-ent">option</span>&gt;
+      &lt;<span class="pl-ent">option</span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>86400<span class="pl-pds">"</span></span>&gt;days&lt;/<span class="pl-ent">option</span>&gt;
+      &lt;<span class="pl-ent">option</span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>604800<span class="pl-pds">"</span></span>&gt;weeks&lt;/<span class="pl-ent">option</span>&gt;
+      &lt;<span class="pl-ent">option</span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>18144000<span class="pl-pds">"</span></span>&gt;months&lt;/<span class="pl-ent">option</span>&gt;
+    &lt;/<span class="pl-ent">select</span>&gt;
+  &lt;/<span class="pl-ent">div</span>&gt;
+&lt;/<span class="pl-ent">span</span>&gt;</pre></div>
+
+<h3>
+<a id="configuration-1" class="anchor" href="#configuration-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h3>
+
+<p>The following arguments can be used to configure the timespan:</p>
+
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>units</td>
+<td>The list of units that will be displayed</td>
+<td>[ :seconds, :minutes, :hours, :days, :weeks, :months ]</td>
+</tr>
+<tr>
+<td>quantity_options</td>
+<td>html options to be added to the quantity input</td>
+<td>{}</td>
+</tr>
+<tr>
+<td>unit_options</td>
+<td>html options to be added to the unit select</td>
+<td>{}</td>
+</tr>
+</tbody>
+</table>
+
+<p>You can also change the default of <code>units</code> by invoking it on the BootstrapFormExtensions::Timespan, for example in an initializer file, like this:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-c1">BootstrapFormExtensions</span>::<span class="pl-c1">Timespan</span>.units <span class="pl-k">=</span> [ <span class="pl-c1">:hours</span>, <span class="pl-c1">:days</span> ]</pre></div>
+
+<h2>
+<a id="arrayedfield" class="anchor" href="#arrayedfield" aria-hidden="true"><span class="octicon octicon-link"></span></a>ArrayedField</h2>
+
+<p>ArrayedField provides three helpers:</p>
+
+<h3>
+<a id="arrayed_text_field" class="anchor" href="#arrayed_text_field" aria-hidden="true"><span class="octicon octicon-link"></span></a>arrayed_text_field</h3>
+
+<p>Given a column that holds an array of texts, this helper adds a multiple line text inputs:</p>
+
+<div class="highlight highlight-text-html-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s1"> f.arrayed_text_field <span class="pl-c1">:lists</span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span></pre></div>
+
+<p>It accepts any option you'd pass to a form_group. If the column provided doesn't exist, or is not an array, it assumes an empty array as the value.</p>
+
+<h3>
+<a id="arrayed_url_field" class="anchor" href="#arrayed_url_field" aria-hidden="true"><span class="octicon octicon-link"></span></a>arrayed_url_field</h3>
+
+<p>Given a column that holds an array of URLs, this helper adds a multiple line url inputs:</p>
+
+<div class="highlight highlight-text-html-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s1"> f.arrayed_url_field <span class="pl-c1">:urls</span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span></pre></div>
+
+<p>It accepts any option you'd pass to a form_group. If the column provided doesn't exist, or is not an array, it assumes an empty array as the value.</p>
+
+<h3>
+<a id="arrayed_json_field" class="anchor" href="#arrayed_json_field" aria-hidden="true"><span class="octicon octicon-link"></span></a>arrayed_json_field</h3>
+
+<p>Given a column that holds an array of hashes, this helper adds a multiple line, multiple field, text/select inputs:</p>
+
+<div class="highlight highlight-text-html-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s1"> f.arrayed_json_field <span class="pl-c1">:variables</span>, [ <span class="pl-c1">:name</span>, <span class="pl-c1">:value</span> ] </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span></pre></div>
+
+<p>The generated html contains multiple lines like this:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>col-sm-2<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">input</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>thing[variables][][name]<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-control<span class="pl-pds">"</span></span> <span class="pl-e">placeholder</span>=<span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span> /&gt;
+&lt;/<span class="pl-ent">div</span>&gt;
+&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>col-sm-2<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">input</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>thing[variables][][value]<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-control<span class="pl-pds">"</span></span> <span class="pl-e">placeholder</span>=<span class="pl-s"><span class="pl-pds">"</span>value<span class="pl-pds">"</span></span> /&gt;
+&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<p>The list of fields in the hash can be customized further:</p>
+
+<div class="highlight highlight-text-html-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s1"> f.arrayed_json_field <span class="pl-c1">:variables</span>, [ { <span class="pl-c1">name:</span> { <span class="pl-c1">type:</span> <span class="pl-c1">:select</span>, <span class="pl-c1">options:</span> [ [ <span class="pl-s"><span class="pl-pds">"</span>One<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>var1<span class="pl-pds">"</span></span> ], [ <span class="pl-s"><span class="pl-pds">"</span>Two<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>var2<span class="pl-pds">"</span></span> ] ] } }, <span class="pl-c1">:value</span> ] </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span></pre></div>
+
+<p><code>type</code> can be <code>:text</code> or <code>:select</code>.</p>
+
+<p>The generated html for each element of the array would look something like this:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>col-sm-2<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">select</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-control<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">option</span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>var1<span class="pl-pds">"</span></span>&gt;One&lt;/<span class="pl-ent">option</span>&gt;
+    &lt;<span class="pl-ent">option</span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>var2<span class="pl-pds">"</span></span>&gt;Two&lt;/<span class="pl-ent">option</span>&gt;
+  &lt;/<span class="pl-ent">select</span>&gt;
+&lt;/<span class="pl-ent">div</span>&gt;
+&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>col-sm-2<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">input</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-control<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>thing[variables][][value]<span class="pl-pds">"</span></span> <span class="pl-e">placeholder</span>=<span class="pl-s"><span class="pl-pds">"</span>value<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span>&gt;
+&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<p>It accepts any option you'd pass to a form_group. If the column provided doesn't exist, or is not an array, it assumes an empty array as the value.</p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Here's a quick guide for contributing:</p>
+
+<ol>
+<li><p>Fork the repo.</p></li>
+<li><p>Run the existing test suite:</p></li>
+</ol>
+
+<pre><code>$ bundle exec rake -f test/dummy/Rakefile db:create db:migrate RAILS_ENV=test
+$ bundle exec rake
+$ bundle exec rake jasmine:ci
+</code></pre>
+
+<ol>
+<li><p>Add tests for your change.</p></li>
+<li><p>Add your changes and make your test(s) pass.</p></li>
+<li><p>Update the README if necessary.</p></li>
+<li><p>Add a line to the CHANGELOG for your bug fix or feature.</p></li>
+<li><p>Push to your fork and submit a pull request.</p></li>
+</ol>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/jdugarte/rails-bootstrap-form-extensions">Rails Bootstrap Form Extensions</a> is maintained by <a href="https://github.com/jdugarte">jdugarte</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
