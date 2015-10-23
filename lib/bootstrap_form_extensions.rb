@@ -2,6 +2,7 @@ require 'bootstrap_form/form_builder'
 require 'bootstrap_form_extensions/submit_bar'
 require 'bootstrap_form_extensions/timespan'
 require 'bootstrap_form_extensions/arrayed_field'
+require 'bootstrap_form_extensions/scheduler'
 
 module BootstrapFormExtensions
   module Rails
@@ -12,4 +13,5 @@ end
 
 BootstrapForm::FormBuilder.send :include, BootstrapFormExtensions::SubmitBar,
                                           BootstrapFormExtensions::Timespan,
-                                          BootstrapFormExtensions::ArrayedField
+                                          BootstrapFormExtensions::ArrayedField,
+                                          BootstrapFormExtensions::Scheduler

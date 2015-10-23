@@ -9,6 +9,10 @@ module BootstrapFormExtensions
       content_tag :i, nil, options
     end
 
+    def true? value
+      value.to_s.match(/(true|t|yes|y|1)$/i).present?
+    end
+
   end
 
 end

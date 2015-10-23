@@ -16,3 +16,36 @@
   width: 100%;
   text-align: left;
 }
+
+// Scheduler
+.scheduler-badge {
+}
+.scheduler-badge td {
+  cursor: pointer;
+  width: 13px;
+  line-height: 0.5em;
+  border: 1px solid grey;
+}
+.scheduler-badge td.on {
+  background-color: #dff0d8;
+}
+.scheduler-editor a {
+  color: #777777;
+}
+.scheduler-editor th {
+  width: 38px;
+  text-align: center;
+}
+.scheduler-editor th a {
+  font-weight: normal;
+}
+.scheduler-editor td.clickable {
+  border: 1px solid lightgrey;
+  cursor: pointer;
+}
+.scheduler-editor td.clickable.on {
+  background-color: #dff0d8;
+}
+#scheduler-container a {
+  cursor: pointer;
+}

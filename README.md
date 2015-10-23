@@ -246,6 +246,102 @@ The generated html for each element of the array would look something like this:
 
 It accepts any option you'd pass to a form_group. If the column provided doesn't exist, or is not an array, it assumes an empty array as the value.
 
+## Scheduler
+
+This widget creates a grid of days and hours to choose a schedule. Called like this:
+
+```erb
+<%= f.scheduler :schedule %>
+```
+
+generates this:
+
+![scheduler - badge](https://raw.githubusercontent.com/jdugarte/rails-bootstrap-form-extensions/gh-pages/images/scheduler%20-%20badge%20-%20partial%20selection.png)
+
+This grid reflects the schedule selected. Clicking on the grid brings up the schedule editor:
+
+![scheduler - editor](https://raw.githubusercontent.com/jdugarte/rails-bootstrap-form-extensions/gh-pages/images/scheduler%20-%20editor%20-%20partial%20selection.png)
+
+The days and hours headers are clickable, as well as each cell, to allow any custom selection.
+
+### Configuration
+
+The following arguments can be used to configure the scheduler:
+
+| Argument | Description | Default |
+| -------- |-------------| --------|
+| label | Label text | Attribute's name |
+
+### Model
+
+This control expects the attribute to be serialized like this:
+
+```ruby
+# Migration:
+
+class AddSchedulerField < ActiveRecord::Migration
+  def change
+    add_column :things, :schedule, :text
+  end
+end
+
+# Model
+
+class Thing < ActiveRecord::Base
+  ...
+  serialize :schedule, BootstrapFormExtensions::Scheduler.serializer
+  ...
+end
+```
+
+This will serialize the column to yaml. If you're using an array column (e.g. PostgreSQL), you could do:
+
+```ruby
+# Migration:
+
+class AddSchedulerField < ActiveRecord::Migration
+  def change
+    add_column :things, :schedule, :text, array: true, default: []
+  end
+end
+
+# Model
+
+class Thing < ActiveRecord::Base
+  ...
+  serialize :schedule, BootstrapFormExtensions::Scheduler.serializer to: :array
+  ...
+end
+```
+
+#### Default selection
+
+Each hour in the schedule grid is selected by default:
+
+```ruby
+> thing = Thing.new schedule: []
+> thing.schedule
+=> [[true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true], ...]
+```
+
+You can change this default in the model:
+
+```ruby
+class Thing < ActiveRecord::Base
+  ...
+  serialize :schedule, BootstrapFormExtensions::Scheduler.serializer default_selection: false
+  ...
+end
+```
+
+This would result in:
+
+```ruby
+> thing = Thing.new schedule: []
+> thing.schedule
+=> [[false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false], ...]
+```
+
 ## Contributing
 
 Here's a quick guide for contributing:

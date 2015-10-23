@@ -5,5 +5,6 @@ class Thing < ActiveRecord::Base
   serialize :urls, Array
   serialize :list, Array
   serialize :variables, Array
+  serialize :schedule, BootstrapFormExtensions::Scheduler.serializer
 
 end

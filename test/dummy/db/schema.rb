@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006181943) do
+ActiveRecord::Schema.define(version: 20151007213131) do
 
   create_table "things", force: :cascade do |t|
     t.string  "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20151006181943) do
     t.text    "urls"
     t.text    "list"
     t.text    "variables"
+    t.text    "schedule"
   end
 
 end
