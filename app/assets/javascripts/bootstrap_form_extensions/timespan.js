@@ -51,7 +51,7 @@
   // TIMESPAN DATA-API
   // =================
 
-  $(window).on('load', function () {
+  $(window).on('load page:load page:restore', function () {
     $('[data-timespan]').each(function () {
       Plugin.call(this)
     })

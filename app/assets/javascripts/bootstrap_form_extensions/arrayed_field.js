@@ -61,7 +61,7 @@
   // ARRAYED FIELD DATA-API
   // ======================
 
-  $(window).on('load', function () {
+  $(window).on('load page:load page:restore', function () {
     $('[data-arrayed-field]').each(function () {
       Plugin.call(this)
     })
