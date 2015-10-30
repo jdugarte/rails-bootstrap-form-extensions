@@ -8,13 +8,13 @@ module BootstrapFormExtensions
       BootstrapFormExtensions::Scheduler::Serializer.new to, default_selection
     end
 
-    def scheduler method, label: nil
+    def scheduler method, **options
       schedule = object.send method
-      label  ||= method.to_s.humanize
       hidden   = hidden_field method, value: JSON.dump(schedule), class: 'scheduler-hidden-field'
-      form_group method, label: { text: label } do
-        content_tag :div, hidden + schedule_to_table(schedule), data: { scheduler: true }
-      end
+      options[:wrapper] ||= {}
+      options[:wrapper][:data] ||= {}
+      options[:wrapper][:data][:scheduler] = true
+      form_group_builder(method, options) { hidden + schedule_to_table(schedule) }
     end
 
     private

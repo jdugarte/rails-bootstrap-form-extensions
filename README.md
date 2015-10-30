@@ -264,13 +264,7 @@ This grid reflects the schedule selected. Clicking on the grid brings up the sch
 
 The days and hours headers are clickable, as well as each cell, to allow any custom selection.
 
-### Configuration
-
-The following arguments can be used to configure the scheduler:
-
-| Argument | Description | Default |
-| -------- |-------------| --------|
-| label | Label text | Attribute's name |
+`scheduler` accepts the same arguments than bootstrap form's `form_group`: a method for the value, and options for the form group.
 
 ### Model
 
