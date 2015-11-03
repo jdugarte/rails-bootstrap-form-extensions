@@ -30,7 +30,7 @@ And require the CSS in your `application.css` file:
 
 ```css
 /*
- *= require rails_bootstrap_form_extensions
+ *= require bootstrap_form_extensions
  */
 ```
 

@@ -29,20 +29,6 @@ end
 task default: :test
 
 
-desc "Create bootstrap_form_extensions.js, concatenating all javascript files"
-task :concatjs do
-  File.open('app/assets/javascripts/bootstrap_form_extensions.js', 'w') do |concat_file|
-    files = Dir.glob('app/assets/javascripts/bootstrap_form_extensions/*.js')
-    files << 'app/assets/javascripts/jquery.html5data.min.js'
-    files.each do |source_file|
-      content = File.open(source_file, 'r').read
-      content.each_line { |line| concat_file << line }
-      concat_file << "\n\n"
-    end
-  end
-end
-
-
 require 'jasmine'
 ENV['JASMINE_CONFIG_PATH'] = 'test/javascripts/support/jasmine.yml'
 load 'jasmine/tasks/jasmine.rake'
