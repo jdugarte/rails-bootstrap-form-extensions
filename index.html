@@ -585,6 +585,121 @@
 <div class="highlight highlight-text-html-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s1"> date_time_picker <span class="pl-c1">:start_at</span>, <span class="pl-c1">date_options:</span> { <span class="pl-c1">widget:</span> { <span class="pl-c1">clear_btn:</span> <span class="pl-c1">true</span> } }, <span class="pl-c1">time_options:</span> { <span class="pl-c1">widget:</span> { <span class="pl-c1">disable_mousewheel:</span> <span class="pl-c1">true</span> } } </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span></pre></div>
 
 <h2>
+<a id="selectornew" class="anchor" href="#selectornew" aria-hidden="true"><span class="octicon octicon-link"></span></a>SelectOrNew</h2>
+
+<p>This helpers creates a select tag with an extra "New..." option at the end, that allows the user to input a new item. For instance:</p>
+
+<div class="highlight highlight-text-html-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s1"> f.select_or_new <span class="pl-c1">:category</span>, [ [ <span class="pl-s"><span class="pl-pds">'</span>One<span class="pl-pds">'</span></span>, <span class="pl-c1">1</span> ], [ <span class="pl-s"><span class="pl-pds">'</span>Two<span class="pl-pds">'</span></span>, <span class="pl-c1">2</span> ] ] </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span></pre></div>
+
+<p>generates this html:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-group<span class="pl-pds">"</span></span> <span class="pl-e">data-select-or-new</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">label</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>control-label col-sm-2<span class="pl-pds">"</span></span> <span class="pl-e">for</span>=<span class="pl-s"><span class="pl-pds">"</span>thing_category<span class="pl-pds">"</span></span>&gt;Category&lt;/<span class="pl-ent">label</span>&gt;
+  &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>col-sm-10<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">select</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-control<span class="pl-pds">"</span></span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>thing_category<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>thing[category]<span class="pl-pds">"</span></span>&gt;
+      &lt;<span class="pl-ent">option</span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>&gt;Please select&lt;/<span class="pl-ent">option</span>&gt;
+      &lt;<span class="pl-ent">option</span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span>&gt;One&lt;/<span class="pl-ent">option</span>&gt;
+      &lt;<span class="pl-ent">option</span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span>&gt;Two&lt;/<span class="pl-ent">option</span>&gt;
+      &lt;<span class="pl-ent">option</span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>0<span class="pl-pds">"</span></span>&gt;New...&lt;/<span class="pl-ent">option</span>&gt;
+    &lt;/<span class="pl-ent">select</span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>input-group<span class="pl-pds">"</span></span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>display: none;<span class="pl-pds">"</span></span>&gt;
+      &lt;<span class="pl-ent">input</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-control<span class="pl-pds">"</span></span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>thing_new_category<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>thing[new_category]<span class="pl-pds">"</span></span> <span class="pl-e">placeholder</span>=<span class="pl-s"><span class="pl-pds">"</span>New...<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span>&gt;
+      &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>input-group-addon select-or-new-cancel<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">i</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>text-danger glyphicon glyphicon-remove<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">i</span>&gt;
+      &lt;/<span class="pl-ent">div</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;
+  &lt;/<span class="pl-ent">div</span>&gt;
+&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<p>Initially, the control looks like a regular select tag:</p>
+
+<p><img src="https://raw.githubusercontent.com/jdugarte/rails-bootstrap-form-extensions/2ee06731be906d44edf6104a44e5db9d3a7790b8/images/select_or_new%20-%20select.png" alt="select_or_new - select"></p>
+
+<p>When "New..." is selected, it turns to:</p>
+
+<p><img src="https://raw.githubusercontent.com/jdugarte/rails-bootstrap-form-extensions/2ee06731be906d44edf6104a44e5db9d3a7790b8/images/select_or_new%20-%20input.png" alt="select_or_new - input"></p>
+
+<p>To go back to the select (canceling the new input), click on the cancel button (the red X).</p>
+
+<p>The helper accepts the same parameters as <a href="http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#method-i-select">Rails' select helper</a>, plus any option you'd pass to a form_group.</p>
+
+<p>If any of the choices you provided is selected, the appropriate value will be set in the filed (category_id, in the previous example). If "New..." is selected, the id will be set to '0', and a field called "new__field_" will be added (in the previous example that would be: category_id = '0', new_category = 'New Category').</p>
+
+<h3>
+<a id="handling-the-new-value" class="anchor" href="#handling-the-new-value" aria-hidden="true"><span class="octicon octicon-link"></span></a>Handling the new value</h3>
+
+<p>You could have something like this in the controller:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">class</span> <span class="pl-en">ThingsController<span class="pl-e"> &lt; ApplicationController</span></span>
+
+  ...
+
+  <span class="pl-k">def</span> <span class="pl-en">create</span>
+    <span class="pl-smi">@thing</span> <span class="pl-k">=</span> <span class="pl-c1">Thing</span>.build thing_params
+    <span class="pl-smi">@thing</span>.save_with_category
+    respond_with <span class="pl-smi">@thing</span>
+  <span class="pl-k">end</span>
+
+  <span class="pl-k">def</span> <span class="pl-en">update</span>
+    <span class="pl-smi">@thing</span> <span class="pl-k">=</span> <span class="pl-c1">Thing</span>.find(params[<span class="pl-c1">:id</span>])
+    <span class="pl-smi">@thing</span>.assign_attributes thing_params
+    <span class="pl-smi">@thing</span>.save_with_category
+    respond_with <span class="pl-smi">@thing</span>
+  <span class="pl-k">end</span>
+
+  <span class="pl-k">private</span>
+
+  <span class="pl-k">def</span> <span class="pl-en">thing_params</span>
+    params.<span class="pl-k">require</span>(<span class="pl-c1">:thing</span>).permit <span class="pl-c1">:name</span>, <span class="pl-c1">:category_id</span>, <span class="pl-c1">:new_category</span>
+  <span class="pl-k">end</span>
+
+  ...
+
+<span class="pl-k">end</span></pre></div>
+
+<p>And then in the model:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">class</span> <span class="pl-en">Thing<span class="pl-e"> &lt; ActiveRecord::Base</span></span>
+
+  belongs_to <span class="pl-c1">:category</span>
+
+  validates <span class="pl-c1">:name</span>, <span class="pl-c1">:category_id</span>, <span class="pl-c1">presence:</span> <span class="pl-c1">true</span>
+  validate <span class="pl-c1">:new_category_presence</span>
+
+  <span class="pl-k">attr_accessor</span> <span class="pl-c1">:new_category</span>
+
+  <span class="pl-k">def</span> <span class="pl-en">save_with_category</span>
+    <span class="pl-k">return</span> <span class="pl-c1">false</span> <span class="pl-k">unless</span> valid?
+    transaction { add_category_if_new <span class="pl-k">&amp;&amp;</span> save }
+  <span class="pl-k">end</span>
+
+  <span class="pl-k">private</span>
+
+  <span class="pl-k">def</span> <span class="pl-en">add_category_if_new</span>
+    <span class="pl-k">return</span> <span class="pl-c1">true</span> <span class="pl-k">unless</span> category_id <span class="pl-k">==</span> <span class="pl-c1">0</span>
+
+    category <span class="pl-k">=</span> <span class="pl-c1">Category</span>.build <span class="pl-c1">name:</span> new_category
+    <span class="pl-k">if</span> category.save
+      <span class="pl-v">self</span>.category, <span class="pl-v">self</span>.new_category <span class="pl-k">=</span> category, <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>
+      <span class="pl-k">return</span> <span class="pl-c1">true</span>
+    <span class="pl-k">end</span>
+
+    errors.add <span class="pl-c1">:category_id</span>, category.errors.full_messages
+    <span class="pl-k">return</span> <span class="pl-c1">false</span>
+  <span class="pl-k">end</span>
+
+  <span class="pl-k">def</span> <span class="pl-en">new_category_presence</span>
+    <span class="pl-k">return</span> <span class="pl-c1">true</span> <span class="pl-k">unless</span> category_id <span class="pl-k">==</span> <span class="pl-c1">0</span>
+
+    <span class="pl-k">if</span> new_category.blank?
+      errors.add <span class="pl-c1">:category_id</span>, <span class="pl-s"><span class="pl-pds">"</span>can't be blank<span class="pl-pds">"</span></span>
+      <span class="pl-k">return</span> <span class="pl-c1">false</span>
+    <span class="pl-k">end</span>
+  <span class="pl-k">end</span>
+
+<span class="pl-k">end</span></pre></div>
+
+<h2>
 <a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
 
 <p>Here's a quick guide for contributing:</p>
