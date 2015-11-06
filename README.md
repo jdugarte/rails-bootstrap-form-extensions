@@ -6,6 +6,16 @@
 * Rails 4.0+
 * Twitter Bootstrap 3.0+
 
+## Dependencies
+
+This gem will install the following gems/libraries:
+
+* [Rails Bootstrap Forms](https://github.com/bootstrap-ruby/rails-bootstrap-forms), ~> 2.3
+* [Bootstrap Datepicker for Rails](https://github.com/Nerian/bootstrap-datepicker-rails), ~> 1.4
+* [bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker), 1.5.0
+* [Bootstrap Timepicker](https://github.com/jdewit/bootstrap-timepicker), 0.5.0
+* [$.html5data](http://markdalgleish.com/projects/jquery-html5data/), 1.0
+
 ## Installation
 
 Add it to your Gemfile:
