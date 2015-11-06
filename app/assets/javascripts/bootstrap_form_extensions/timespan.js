@@ -9,7 +9,7 @@
     this.$container.on('change.bsfe.timespan.data-api', '.timespan-quantity, .timespan-unit', this.updateSeconds.bind(this))
   }
 
-  Timespan.VERSION = '1.0.0'
+  Timespan.VERSION = '1.0.1'
 
   Timespan.prototype.updateSeconds = function (e) {
     var hidden   = this.$container.find('.timespan-seconds')
