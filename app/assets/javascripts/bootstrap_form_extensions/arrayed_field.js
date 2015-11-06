@@ -10,7 +10,7 @@
     this.$container.on('click.bsfe.arrayedfield.data-api', '.remove-arrayed-field-row', this.removeRow.bind(this))
   }
 
-  ArrayedField.VERSION = '0.0.7'
+  ArrayedField.VERSION = '1.0.0'
 
   ArrayedField.prototype.addRow = function (event) {
     var blueprint = this.$container.find(".blueprint-for-arrayed-field > .row").clone(true)

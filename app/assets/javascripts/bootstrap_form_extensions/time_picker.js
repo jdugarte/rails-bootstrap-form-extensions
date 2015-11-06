@@ -16,7 +16,7 @@
     $(element).timepicker($.extend(defaults, options))
   }
 
-  TimePicker.VERSION = '0.0.7'
+  TimePicker.VERSION = '1.0.0'
 
 
   // TIME PICKER PLUGIN DEFINITION
