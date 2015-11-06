@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007213131) do
+ActiveRecord::Schema.define(version: 20151030194330) do
 
   create_table "things", force: :cascade do |t|
-    t.string  "name"
-    t.integer "duration_in_seconds"
-    t.text    "urls"
-    t.text    "list"
-    t.text    "variables"
-    t.text    "schedule"
+    t.string   "name"
+    t.integer  "duration_in_seconds"
+    t.text     "urls"
+    t.text     "list"
+    t.text     "variables"
+    t.text     "schedule"
+    t.datetime "start_at"
   end
 
 end

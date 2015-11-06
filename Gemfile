@@ -10,6 +10,6 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-gem 'bootstrap_form'
+gem 'date_time_attributes'
 gem 'byebug', group: [:development, :test]
 

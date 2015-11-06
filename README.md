@@ -336,6 +336,132 @@ This would result in:
 => [[false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false], ...]
 ```
 
+## Date and Time Pickers
+
+### DatePicker
+
+This helper is a wrapper for the [bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker) gem. Using all the default arguments, doing this:
+
+```erb
+<%= f.date_picker :start_date %>
+```
+
+generates this html:
+
+```html
+<div class="form-group">
+  <label class="control-label col-sm-2" for="thing_start_date">Start date</label>
+  <div class="col-sm-10">
+    <div class="input-group date" data-date-autoclose="true" data-date-disable-touch-keyboard="true" data-date-enable-on-readonly="false" data-date-format="yyyy-mm-dd" data-date-show-on-focus="false" data-date-today-btn="linked" data-date-today-highlight="true" data-provide="datepicker">
+      <input class="form-control" id="thing_start_date" name="thing[start_date]" size="10" type="text" value="1971-10-21">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    </div>
+  </div>
+</div>
+```
+
+It accepts any option you'd pass to a form_group. You can also pass any  [options to the bootstrap-datepicker gem](http://bootstrap-datepicker.readthedocs.org/en/stable/options.html), like this:
+
+```erb
+<%= f.date_picker :start_date, widget: { clear_btn: true } %>
+```
+
+This helper sets these bootstrap-datepicker's defaults (you can overwrite these too, in the same way shown above):
+
+| Option | Default |
+| ------ | --------|
+| today_highlight        | true |
+| format                 | 'yyyy-mm-dd' |
+| today_btn              | 'linked' |
+| autoclose              | true |
+| disable_touch_keyboard | true |
+| enable_on_readonly     | false |
+| show_on_focus          | false |
+
+Check [bootstrap-datepicker's documentation](http://bootstrap-datepicker.readthedocs.org/en/stable/options.html) for more details on these and other available options.
+
+### TimePicker
+
+This helper is a wrapper for the [Bootstrap Timepicker](https://github.com/jdewit/bootstrap-timepicker) library. Using all the default arguments, doing this:
+
+```erb
+<%= f.time_picker :start_time %>
+```
+
+generates this html:
+
+```html
+<div class="form-group">
+  <label class="control-label col-sm-2" for="thing_start_time">Start time</label>
+  <div class="col-sm-10">
+    <div class="input-group bootstrap-timepicker">
+      <input class="form-control" data-provide="timepicker" id="thing_start_time" name="thing[start_time]" size="8" type="text" value="07:30:00">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+    </div>
+  </div>
+</div>
+```
+
+It accepts any option you'd pass to a form_group. You can also pass any  [options to the Bootstrap Timepicker library](http://m3wolf.github.io/bootstrap3-timepicker/) like this:
+
+```erb
+<%= f.time_picker :start_time, widget: { disable_mousewheel: true } %>
+```
+
+This helper sets these bootstrap-datepicker's defaults (you can overwrite these too, in the same way shown above):
+
+| Option | Default |
+| ------ | --------|
+| minute_step   | 1 |
+| show_seconds  | true |
+| second_step   | 1 |
+| show_meridian | false |
+| default_time  | false |
+
+Check [Bootstrap Timepicker's documentation](http://m3wolf.github.io/bootstrap3-timepicker/) for more details on these and other available options.
+
+### DateTimePicker
+
+This helper puts the DatePicker and TimePicker together for a DateTime field. Using all the default arguments, doing this:
+
+```erb
+<%= f.date_time_picker :start_at %>
+```
+
+generates this html:
+
+```html
+<div class="form-group">
+  <label class="control-label col-sm-2" for="thing_start_at">Start at</label>
+  <div class="col-sm-10 form-inline">
+    <div class="form-group">
+      <div class="input-group date" data-date-autoclose="true" data-date-disable-touch-keyboard="true" data-date-enable-on-readonly="false" data-date-format="yyyy-mm-dd" data-date-show-on-focus="false" data-date-today-btn="linked" data-date-today-highlight="true" data-provide="datepicker">
+        <input class="form-control" id="thing_start_date" name="thing[start_date]" size="10" type="text" value="1971-10-21">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+      </div>
+    </div>&nbsp;&nbsp;
+    <div class="form-group">
+      <div class="input-group bootstrap-timepicker">
+        <input class="form-control" data-provide="timepicker" id="thing_start_time" name="thing[start_time]" size="8" type="text" value="07:30:00">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+The helper assumes the existance of virtual attributes for the data and time, following the naming convention used by the [Date Time Attributes](https://github.com/jdugarte/date_time_attributes) gem. You can specify the names of the virtual attributes like this:
+
+```erb
+<%= f.date_time_picker :start_at, date_method: :start_at_date, time_method: :start_at_time %>
+```
+
+You can pass options to each control, date and time, like this:
+
+```erb
+<%= date_time_picker :start_at, date_options: { widget: { clear_btn: true } }, time_options: { widget: { disable_mousewheel: true } } %>
+```
+
 ## Contributing
 
 Here's a quick guide for contributing:
