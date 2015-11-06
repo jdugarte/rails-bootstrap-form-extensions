@@ -1,5 +1,30 @@
 # Rails Bootstrap Form Extensions
 
+**Table of Contents**
+
+- [Requirements](#requirements)
+- [Dependencies](#dependencies)
+- [Installation](#installation)
+- [SubmitBar](#submitbar)
+	- [Configuration](#configuration)
+	- [Default partial](#default-partial)
+- [Timespan](#timespan)
+	- [Configuration](#configuration-1)
+- [ArrayedField](#arrayedfield)
+	- [arrayed_text_field](#arrayed_text_field)
+	- [arrayed_url_field](#arrayed_url_field)
+	- [arrayed_json_field](#arrayed_json_field)
+- [Scheduler](#scheduler)
+	- [Model](#Model)
+		- [Default selection](#Default-selection)
+- [Date and Time Pickers](#date-and-time-pickers)
+	- [DatePicker](#datepicker)
+	- [TimePicker](#timepicker)
+	- [DateTimePicker](#datetimepicker)
+- [SelectOrNew](#selectornew)
+	- [Handling the new value](#Handling-the-new-value)
+- [Contributing](#contributing)
+
 ## Requirements
 
 * Ruby 2.0+
