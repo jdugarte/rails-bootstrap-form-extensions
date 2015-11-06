@@ -32,6 +32,24 @@
 </ul>
 
 <h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<p>This gem will install the following gems/libraries:</p>
+
+<ul>
+<li>
+<a href="https://github.com/bootstrap-ruby/rails-bootstrap-forms">Rails Bootstrap Forms</a>, ~&gt; 2.3</li>
+<li>
+<a href="https://github.com/Nerian/bootstrap-datepicker-rails">Bootstrap Datepicker for Rails</a>, ~&gt; 1.4</li>
+<li>
+<a href="https://github.com/eternicode/bootstrap-datepicker">bootstrap-datepicker</a>, 1.5.0</li>
+<li>
+<a href="https://github.com/jdewit/bootstrap-timepicker">Bootstrap Timepicker</a>, 0.5.0</li>
+<li>
+<a href="http://markdalgleish.com/projects/jquery-html5data/">$.html5data</a>, 1.0</li>
+</ul>
+
+<h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <p>Add it to your Gemfile:</p>
@@ -51,7 +69,7 @@
 <p>And require the CSS in your <code>application.css</code> file:</p>
 
 <div class="highlight highlight-source-css"><pre><span class="pl-c">/*</span>
-<span class="pl-c"> *= require rails_bootstrap_form_extensions</span>
+<span class="pl-c"> *= require bootstrap_form_extensions</span>
 <span class="pl-c"> */</span></pre></div>
 
 <h2>
@@ -340,27 +358,7 @@
 
 <p>The days and hours headers are clickable, as well as each cell, to allow any custom selection.</p>
 
-<h3>
-<a id="configuration-2" class="anchor" href="#configuration-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h3>
-
-<p>The following arguments can be used to configure the scheduler:</p>
-
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>label</td>
-<td>Label text</td>
-<td>Attribute's name</td>
-</tr>
-</tbody>
-</table>
+<p><code>scheduler</code> accepts the same arguments than bootstrap form's <code>form_group</code>: a method for the value, and options for the form group.</p>
 
 <h3>
 <a id="model" class="anchor" href="#model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Model</h3>
@@ -423,6 +421,168 @@
 <div class="highlight highlight-source-ruby"><pre><span class="pl-k">&gt;</span> thing <span class="pl-k">=</span> <span class="pl-c1">Thing</span>.<span class="pl-k">new</span> <span class="pl-c1">schedule:</span> []
 <span class="pl-k">&gt;</span> thing.schedule
 =&gt; [[<span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>, <span class="pl-c1">false</span>], ...]</pre></div>
+
+<h2>
+<a id="date-and-time-pickers" class="anchor" href="#date-and-time-pickers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Date and Time Pickers</h2>
+
+<h3>
+<a id="datepicker" class="anchor" href="#datepicker" aria-hidden="true"><span class="octicon octicon-link"></span></a>DatePicker</h3>
+
+<p>This helper is a wrapper for the <a href="https://github.com/eternicode/bootstrap-datepicker">bootstrap-datepicker</a> gem. Using all the default arguments, doing this:</p>
+
+<div class="highlight highlight-text-html-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s1"> f.date_picker <span class="pl-c1">:start_date</span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span></pre></div>
+
+<p>generates this html:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-group<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">label</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>control-label col-sm-2<span class="pl-pds">"</span></span> <span class="pl-e">for</span>=<span class="pl-s"><span class="pl-pds">"</span>thing_start_date<span class="pl-pds">"</span></span>&gt;Start date&lt;/<span class="pl-ent">label</span>&gt;
+  &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>col-sm-10<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>input-group date<span class="pl-pds">"</span></span> <span class="pl-e">data-date-autoclose</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-e">data-date-disable-touch-keyboard</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-e">data-date-enable-on-readonly</span>=<span class="pl-s"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span> <span class="pl-e">data-date-format</span>=<span class="pl-s"><span class="pl-pds">"</span>yyyy-mm-dd<span class="pl-pds">"</span></span> <span class="pl-e">data-date-show-on-focus</span>=<span class="pl-s"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span> <span class="pl-e">data-date-today-btn</span>=<span class="pl-s"><span class="pl-pds">"</span>linked<span class="pl-pds">"</span></span> <span class="pl-e">data-date-today-highlight</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-e">data-provide</span>=<span class="pl-s"><span class="pl-pds">"</span>datepicker<span class="pl-pds">"</span></span>&gt;
+      &lt;<span class="pl-ent">input</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-control<span class="pl-pds">"</span></span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>thing_start_date<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>thing[start_date]<span class="pl-pds">"</span></span> <span class="pl-e">size</span>=<span class="pl-s"><span class="pl-pds">"</span>10<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>1971-10-21<span class="pl-pds">"</span></span>&gt;
+      &lt;<span class="pl-ent">span</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>input-group-addon<span class="pl-pds">"</span></span>&gt;&lt;<span class="pl-ent">i</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>glyphicon glyphicon-calendar<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">i</span>&gt;&lt;/<span class="pl-ent">span</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;
+  &lt;/<span class="pl-ent">div</span>&gt;
+&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<p>It accepts any option you'd pass to a form_group. You can also pass any  <a href="http://bootstrap-datepicker.readthedocs.org/en/stable/options.html">options to the bootstrap-datepicker gem</a>, like this:</p>
+
+<div class="highlight highlight-text-html-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s1"> f.date_picker <span class="pl-c1">:start_date</span>, <span class="pl-c1">widget:</span> { <span class="pl-c1">clear_btn:</span> <span class="pl-c1">true</span> } </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span></pre></div>
+
+<p>This helper sets these bootstrap-datepicker's defaults (you can overwrite these too, in the same way shown above):</p>
+
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>today_highlight</td>
+<td>true</td>
+</tr>
+<tr>
+<td>format</td>
+<td>'yyyy-mm-dd'</td>
+</tr>
+<tr>
+<td>today_btn</td>
+<td>'linked'</td>
+</tr>
+<tr>
+<td>autoclose</td>
+<td>true</td>
+</tr>
+<tr>
+<td>disable_touch_keyboard</td>
+<td>true</td>
+</tr>
+<tr>
+<td>enable_on_readonly</td>
+<td>false</td>
+</tr>
+<tr>
+<td>show_on_focus</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+
+<p>Check <a href="http://bootstrap-datepicker.readthedocs.org/en/stable/options.html">bootstrap-datepicker's documentation</a> for more details on these and other available options.</p>
+
+<h3>
+<a id="timepicker" class="anchor" href="#timepicker" aria-hidden="true"><span class="octicon octicon-link"></span></a>TimePicker</h3>
+
+<p>This helper is a wrapper for the <a href="https://github.com/jdewit/bootstrap-timepicker">Bootstrap Timepicker</a> library. Using all the default arguments, doing this:</p>
+
+<div class="highlight highlight-text-html-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s1"> f.time_picker <span class="pl-c1">:start_time</span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span></pre></div>
+
+<p>generates this html:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-group<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">label</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>control-label col-sm-2<span class="pl-pds">"</span></span> <span class="pl-e">for</span>=<span class="pl-s"><span class="pl-pds">"</span>thing_start_time<span class="pl-pds">"</span></span>&gt;Start time&lt;/<span class="pl-ent">label</span>&gt;
+  &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>col-sm-10<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>input-group bootstrap-timepicker<span class="pl-pds">"</span></span>&gt;
+      &lt;<span class="pl-ent">input</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-control<span class="pl-pds">"</span></span> <span class="pl-e">data-provide</span>=<span class="pl-s"><span class="pl-pds">"</span>timepicker<span class="pl-pds">"</span></span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>thing_start_time<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>thing[start_time]<span class="pl-pds">"</span></span> <span class="pl-e">size</span>=<span class="pl-s"><span class="pl-pds">"</span>8<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>07:30:00<span class="pl-pds">"</span></span>&gt;
+      &lt;<span class="pl-ent">span</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>input-group-addon<span class="pl-pds">"</span></span>&gt;&lt;<span class="pl-ent">i</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>glyphicon glyphicon-time<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">i</span>&gt;&lt;/<span class="pl-ent">span</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;
+  &lt;/<span class="pl-ent">div</span>&gt;
+&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<p>It accepts any option you'd pass to a form_group. You can also pass any  <a href="http://m3wolf.github.io/bootstrap3-timepicker/">options to the Bootstrap Timepicker library</a> like this:</p>
+
+<div class="highlight highlight-text-html-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s1"> f.time_picker <span class="pl-c1">:start_time</span>, <span class="pl-c1">widget:</span> { <span class="pl-c1">disable_mousewheel:</span> <span class="pl-c1">true</span> } </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span></pre></div>
+
+<p>This helper sets these bootstrap-datepicker's defaults (you can overwrite these too, in the same way shown above):</p>
+
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minute_step</td>
+<td>1</td>
+</tr>
+<tr>
+<td>show_seconds</td>
+<td>true</td>
+</tr>
+<tr>
+<td>second_step</td>
+<td>1</td>
+</tr>
+<tr>
+<td>show_meridian</td>
+<td>false</td>
+</tr>
+<tr>
+<td>default_time</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+
+<p>Check <a href="http://m3wolf.github.io/bootstrap3-timepicker/">Bootstrap Timepicker's documentation</a> for more details on these and other available options.</p>
+
+<h3>
+<a id="datetimepicker" class="anchor" href="#datetimepicker" aria-hidden="true"><span class="octicon octicon-link"></span></a>DateTimePicker</h3>
+
+<p>This helper puts the DatePicker and TimePicker together for a DateTime field. Using all the default arguments, doing this:</p>
+
+<div class="highlight highlight-text-html-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s1"> f.date_time_picker <span class="pl-c1">:start_at</span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span></pre></div>
+
+<p>generates this html:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-group<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">label</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>control-label col-sm-2<span class="pl-pds">"</span></span> <span class="pl-e">for</span>=<span class="pl-s"><span class="pl-pds">"</span>thing_start_at<span class="pl-pds">"</span></span>&gt;Start at&lt;/<span class="pl-ent">label</span>&gt;
+  &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>col-sm-10 form-inline<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-group<span class="pl-pds">"</span></span>&gt;
+      &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>input-group date<span class="pl-pds">"</span></span> <span class="pl-e">data-date-autoclose</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-e">data-date-disable-touch-keyboard</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-e">data-date-enable-on-readonly</span>=<span class="pl-s"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span> <span class="pl-e">data-date-format</span>=<span class="pl-s"><span class="pl-pds">"</span>yyyy-mm-dd<span class="pl-pds">"</span></span> <span class="pl-e">data-date-show-on-focus</span>=<span class="pl-s"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span> <span class="pl-e">data-date-today-btn</span>=<span class="pl-s"><span class="pl-pds">"</span>linked<span class="pl-pds">"</span></span> <span class="pl-e">data-date-today-highlight</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-e">data-provide</span>=<span class="pl-s"><span class="pl-pds">"</span>datepicker<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">input</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-control<span class="pl-pds">"</span></span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>thing_start_date<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>thing[start_date]<span class="pl-pds">"</span></span> <span class="pl-e">size</span>=<span class="pl-s"><span class="pl-pds">"</span>10<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>1971-10-21<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">span</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>input-group-addon<span class="pl-pds">"</span></span>&gt;&lt;<span class="pl-ent">i</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>glyphicon glyphicon-calendar<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">i</span>&gt;&lt;/<span class="pl-ent">span</span>&gt;
+      &lt;/<span class="pl-ent">div</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;<span class="pl-c1">&amp;nbsp;&amp;nbsp;</span>
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-group<span class="pl-pds">"</span></span>&gt;
+      &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>input-group bootstrap-timepicker<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">input</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>form-control<span class="pl-pds">"</span></span> <span class="pl-e">data-provide</span>=<span class="pl-s"><span class="pl-pds">"</span>timepicker<span class="pl-pds">"</span></span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>thing_start_time<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>thing[start_time]<span class="pl-pds">"</span></span> <span class="pl-e">size</span>=<span class="pl-s"><span class="pl-pds">"</span>8<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>07:30:00<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">span</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>input-group-addon<span class="pl-pds">"</span></span>&gt;&lt;<span class="pl-ent">i</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>glyphicon glyphicon-time<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">i</span>&gt;&lt;/<span class="pl-ent">span</span>&gt;
+      &lt;/<span class="pl-ent">div</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;
+  &lt;/<span class="pl-ent">div</span>&gt;
+&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<p>The helper assumes the existance of virtual attributes for the data and time, following the naming convention used by the <a href="https://github.com/jdugarte/date_time_attributes">Date Time Attributes</a> gem. You can specify the names of the virtual attributes like this:</p>
+
+<div class="highlight highlight-text-html-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s1"> f.date_time_picker <span class="pl-c1">:start_at</span>, <span class="pl-c1">date_method:</span> <span class="pl-c1">:start_at_date</span>, <span class="pl-c1">time_method:</span> <span class="pl-c1">:start_at_time</span> </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span></pre></div>
+
+<p>You can pass options to each control, date and time, like this:</p>
+
+<div class="highlight highlight-text-html-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s1"> date_time_picker <span class="pl-c1">:start_at</span>, <span class="pl-c1">date_options:</span> { <span class="pl-c1">widget:</span> { <span class="pl-c1">clear_btn:</span> <span class="pl-c1">true</span> } }, <span class="pl-c1">time_options:</span> { <span class="pl-c1">widget:</span> { <span class="pl-c1">disable_mousewheel:</span> <span class="pl-c1">true</span> } } </span><span class="pl-pse"><span class="pl-s1">%</span>&gt;</span></pre></div>
 
 <h2>
 <a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
