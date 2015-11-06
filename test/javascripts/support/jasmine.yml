@@ -13,7 +13,6 @@
 src_files:
   - test/javascripts/vendor/jquery-2.1.4.min.js
   - test/javascripts/vendor/bootstrap.min.js
-  - test/javascripts/vendor/bootstrap-datepicker.min.js
   - app/assets/javascripts/bootstrap_form_extensions/*.js
 
 # stylesheets
