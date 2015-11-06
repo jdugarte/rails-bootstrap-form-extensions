@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151030194330) do
+ActiveRecord::Schema.define(version: 20151106165522) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "things", force: :cascade do |t|
     t.string   "name"
@@ -21,6 +25,7 @@ ActiveRecord::Schema.define(version: 20151030194330) do
     t.text     "variables"
     t.text     "schedule"
     t.datetime "start_at"
+    t.integer  "category_id"
   end
 
 end

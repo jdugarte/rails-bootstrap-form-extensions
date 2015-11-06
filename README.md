@@ -472,6 +472,127 @@ You can pass options to each control, date and time, like this:
 <%= date_time_picker :start_at, date_options: { widget: { clear_btn: true } }, time_options: { widget: { disable_mousewheel: true } } %>
 ```
 
+## SelectOrNew
+
+This helpers creates a select tag with an extra "New..." option at the end, that allows the user to input a new item. For instance:
+
+```erb
+<%= f.select_or_new :category, [ [ 'One', 1 ], [ 'Two', 2 ] ] %>
+```
+
+generates this html:
+
+```html
+<div class="form-group" data-select-or-new="true">
+  <label class="control-label col-sm-2" for="thing_category">Category</label>
+  <div class="col-sm-10">
+    <select class="form-control" id="thing_category" name="thing[category]">
+      <option value="">Please select</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="0">New...</option>
+    </select>
+    <div class="input-group" style="display: none;">
+      <input class="form-control" id="thing_new_category" name="thing[new_category]" placeholder="New..." type="text">
+      <div class="input-group-addon select-or-new-cancel">
+        <i class="text-danger glyphicon glyphicon-remove"></i>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+Initially, the control looks like a regular select tag:
+
+![select_or_new - select](https://raw.githubusercontent.com/jdugarte/rails-bootstrap-form-extensions/2ee06731be906d44edf6104a44e5db9d3a7790b8/images/select_or_new%20-%20select.png)
+
+When "New..." is selected, it turns to:
+
+![select_or_new - input](https://raw.githubusercontent.com/jdugarte/rails-bootstrap-form-extensions/2ee06731be906d44edf6104a44e5db9d3a7790b8/images/select_or_new%20-%20input.png)
+
+To go back to the select (canceling the new input), click on the cancel button (the red X).
+
+The helper accepts the same parameters as [Rails' select helper](http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#method-i-select), plus any option you'd pass to a form_group.
+
+If any of the choices you provided is selected, the appropriate value will be set in the filed (category_id, in the previous example). If "New..." is selected, the id will be set to '0', and a field called "new\__field_" will be added (in the previous example that would be: category_id = '0', new_category = 'New Category').
+
+### Handling the new value
+
+You could have something like this in the controller:
+
+```ruby
+class ThingsController < ApplicationController
+
+  ...
+
+  def create
+    @thing = Thing.build thing_params
+    @thing.save_with_category
+    respond_with @thing
+  end
+
+  def update
+    @thing = Thing.find(params[:id])
+    @thing.assign_attributes thing_params
+    @thing.save_with_category
+    respond_with @thing
+  end
+
+  private
+
+  def thing_params
+    params.require(:thing).permit :name, :category_id, :new_category
+  end
+
+  ...
+
+end
+```
+
+And then in the model:
+
+```ruby
+class Thing < ActiveRecord::Base
+
+  belongs_to :category
+
+  validates :name, :category_id, presence: true
+  validate :new_category_presence
+
+  attr_accessor :new_category
+
+  def save_with_category
+    return false unless valid?
+    transaction { add_category_if_new && save }
+  end
+
+  private
+
+  def add_category_if_new
+    return true unless category_id == 0
+
+    category = Category.build name: new_category
+    if category.save
+      self.category, self.new_category = category, ''
+      return true
+    end
+
+    errors.add :category_id, category.errors.full_messages
+    return false
+  end
+
+  def new_category_presence
+    return true unless category_id == 0
+
+    if new_category.blank?
+      errors.add :category_id, "can't be blank"
+      return false
+    end
+  end
+
+end
+```
+
 ## Contributing
 
 Here's a quick guide for contributing:
