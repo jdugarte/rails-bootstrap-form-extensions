@@ -25,10 +25,18 @@ module BootstrapFormExtensions
     end
 
     def date_picker method, **options
+      # TODO: Replace for these commented out lines, once this pull request is merged: https://github.com/bootstrap-ruby/rails-bootstrap-forms/pull/238
+      # options[:wrapper] ||= {}
+      # options[:wrapper].merge! inline: true
+      options[:control_col] = 'col-sm-10 form-inline'
       form_group_builder(method, options) { date_picker_builder method, options }
     end
 
     def time_picker method, **options
+      # TODO: Replace for these commented out lines, once this pull request is merged: https://github.com/bootstrap-ruby/rails-bootstrap-forms/pull/238
+      # options[:wrapper] ||= {}
+      # options[:wrapper].merge! inline: true
+      options[:control_col] = 'col-sm-10 form-inline'
       form_group_builder(method, options) { time_picker_builder method, options }
     end
 

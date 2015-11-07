@@ -8,7 +8,7 @@ class DateTimePickersTest < ActionView::TestCase
   end
 
   test "date_picker" do
-    expected = '<div class="form-group"><label class="control-label col-sm-2" for="thing_start_date">Start date</label><div class="col-sm-10"><div class="input-group date" data-provide="datepicker" data-date-today-highlight="true" data-date-format="yyyy-mm-dd" data-date-today-btn="linked" data-date-autoclose="true" data-date-disable-touch-keyboard="true" data-date-enable-on-readonly="false" data-date-show-on-focus="false"><input size="10" class="form-control" type="text" value="1971-10-21" name="thing[start_date]" id="thing_start_date" /><span class="input-group-addon"><i class=" glyphicon glyphicon-calendar"></i></span></div></div></div>'
+    expected = '<div class="form-group"><label class="control-label col-sm-2" for="thing_start_date">Start date</label><div class="col-sm-10 form-inline"><div class="input-group date" data-provide="datepicker" data-date-today-highlight="true" data-date-format="yyyy-mm-dd" data-date-today-btn="linked" data-date-autoclose="true" data-date-disable-touch-keyboard="true" data-date-enable-on-readonly="false" data-date-show-on-focus="false"><input size="10" class="form-control" type="text" value="1971-10-21" name="thing[start_date]" id="thing_start_date" /><span class="input-group-addon"><i class=" glyphicon glyphicon-calendar"></i></span></div></div></div>'
     assert_equal expected, @builder.date_picker(:start_date)
   end
 
@@ -23,7 +23,7 @@ class DateTimePickersTest < ActionView::TestCase
   end
 
   test "time_picker" do
-    expected = '<div class="form-group"><label class="control-label col-sm-2" for="thing_start_time">Start time</label><div class="col-sm-10"><div class="input-group bootstrap-timepicker"><input class="form-control" size="8" data-provide="timepicker" type="text" value="07:30:00" name="thing[start_time]" id="thing_start_time" /><span class="input-group-addon"><i class=" glyphicon glyphicon-time"></i></span></div></div></div>'
+    expected = '<div class="form-group"><label class="control-label col-sm-2" for="thing_start_time">Start time</label><div class="col-sm-10 form-inline"><div class="input-group bootstrap-timepicker"><input class="form-control" size="8" data-provide="timepicker" type="text" value="07:30:00" name="thing[start_time]" id="thing_start_time" /><span class="input-group-addon"><i class=" glyphicon glyphicon-time"></i></span></div></div></div>'
     assert_equal expected, @builder.time_picker(:start_time)
   end
 
