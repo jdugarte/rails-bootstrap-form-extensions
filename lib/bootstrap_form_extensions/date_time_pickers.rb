@@ -17,7 +17,7 @@ module BootstrapFormExtensions
       # TODO: Replace for these commented out lines, once this pull request is merged: https://github.com/bootstrap-ruby/rails-bootstrap-forms/pull/238
       # options[:wrapper] ||= {}
       # options[:wrapper].merge! inline: true
-      options[:control_col] = 'col-sm-10 form-inline'
+      options[:control_col] = control_col_for_date_time_pickers options
 
       date_picker_html = content_tag :div, date_picker_builder(date_method, date_options), class: 'form-group'
       time_picker_html = content_tag :div, time_picker_builder(time_method, time_options), class: 'form-group'
@@ -28,7 +28,7 @@ module BootstrapFormExtensions
       # TODO: Replace for these commented out lines, once this pull request is merged: https://github.com/bootstrap-ruby/rails-bootstrap-forms/pull/238
       # options[:wrapper] ||= {}
       # options[:wrapper].merge! inline: true
-      options[:control_col] = 'col-sm-10 form-inline'
+      options[:control_col] = control_col_for_date_time_pickers options
       form_group_builder(method, options) { date_picker_builder method, options }
     end
 
@@ -36,7 +36,7 @@ module BootstrapFormExtensions
       # TODO: Replace for these commented out lines, once this pull request is merged: https://github.com/bootstrap-ruby/rails-bootstrap-forms/pull/238
       # options[:wrapper] ||= {}
       # options[:wrapper].merge! inline: true
-      options[:control_col] = 'col-sm-10 form-inline'
+      options[:control_col] = control_col_for_date_time_pickers options
       form_group_builder(method, options) { time_picker_builder method, options }
     end
 
@@ -74,6 +74,9 @@ module BootstrapFormExtensions
       content_tag :div, text + icon, class: 'input-group bootstrap-timepicker'
     end
 
+    def control_col_for_date_time_pickers options
+      (options[:control_col] || control_col.clone) + ' form-inline'
+    end
   end
 
 end
