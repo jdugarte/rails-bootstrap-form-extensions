@@ -1,3 +1,9 @@
+## 1.0.3 (2015-11-10)
+
+Bugfixes:
+
+  - Adds missing css for SelectOrNew
+
 ## 1.0.2 (2015-11-07)
 
 Bugfixes:
