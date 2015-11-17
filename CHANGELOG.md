@@ -1,3 +1,9 @@
+## 1.0.4 (2015-11-17)
+
+Bugfixes:
+
+  - Align buttons in submit bar with the form
+
 ## 1.0.3 (2015-11-10)
 
 Bugfixes:
