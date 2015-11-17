@@ -80,7 +80,7 @@ Using all the default arguments, doing this:
 generates a form group, with two buttons: Save (a dropdown menu, that includes 'Save and duplicate', and 'Save and new' options), and Cancel:
 
 ```html
-<div class="form-group">
+<div class="form-group col-sm-12">
   <div class='pull-left submitbar-left'>
     <div class="btn-group dropup submitbar-submit-group">
       <button type="submit" class="btn btn-primary submitbar-save">Save</button>

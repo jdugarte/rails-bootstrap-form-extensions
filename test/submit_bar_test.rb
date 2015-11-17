@@ -9,7 +9,7 @@ class SubmitBarTest < ActionView::TestCase
 
   test "SubmitBar with default values" do
     expected = <<-HTML
-<div class="form-group">
+<div class="form-group col-sm-12">
   <div class='pull-left submitbar-left'>
       <div class="btn-group dropup submitbar-submit-group">
         <button type="submit" class="btn btn-primary submitbar-save">Save</button>
