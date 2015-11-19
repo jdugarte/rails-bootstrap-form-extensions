@@ -12,7 +12,7 @@ module BootstrapFormExtensions
       options.delete :include_blank
       choices.unshift [ "Please select", nil ]
       choices.push    [ "New...", 0 ]
-      html_options[:class] = [ "form-control", html_options[:class] ].compact.join(' ')
+      html_options[:class] = merge_css_classes 'form-control', html_options[:class]
       html_options[:style] = 'display: none;' if new_is_selected
       select = self.select_without_bootstrap method, choices, options, html_options
 

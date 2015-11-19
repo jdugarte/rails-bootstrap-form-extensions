@@ -11,8 +11,8 @@ module BootstrapFormExtensions
 
       date_options = options.delete(:date_options) { {} }
       time_options = options.delete(:time_options) { {} }
-      date_options[:class] = [ 'form-control', date_options[:class] ].compact.uniq.join(' ')
-      time_options[:class] = [ 'form-control', time_options[:class] ].compact.uniq.join(' ')
+      date_options[:class] = merge_css_classes 'form-control', date_options[:class]
+      time_options[:class] = merge_css_classes 'form-control', time_options[:class]
 
       # TODO: Replace for these commented out lines, once this pull request is merged: https://github.com/bootstrap-ruby/rails-bootstrap-forms/pull/238
       # options[:wrapper] ||= {}
@@ -77,6 +77,7 @@ module BootstrapFormExtensions
     def control_col_for_date_time_pickers options
       (options[:control_col] || control_col.clone) + ' form-inline'
     end
+
   end
 
 end

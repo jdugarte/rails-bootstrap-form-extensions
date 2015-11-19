@@ -1,6 +1,10 @@
+require 'bootstrap_form_extensions/helpers'
+
 module BootstrapFormExtensions
 
   module Timespan
+
+    include BootstrapFormExtensions::Helpers
 
     UNITS_IN_SECONDS = ActiveSupport::OrderedHash[ :seconds, 1, :minutes, 60, :hours, 3600, :days, 86400, :weeks, 604800, :months, 18144000 ]
 
@@ -32,7 +36,7 @@ module BootstrapFormExtensions
       text_field_name = method.to_s.sub(/(_in_seconds)?$/, '_quantity').to_sym
 
       quantity_options[:size] ||= 5
-      quantity_options[:class] = [ "form-control", "timespan-quantity", quantity_options[:class] ].compact.join(' ')
+      quantity_options[:class] = merge_css_classes 'form-control', 'timespan-quantity', quantity_options[:class]
 
       field = @template.text_field_tag text_field_name, quantity, quantity_options
       field << generate_help(method, nil)
@@ -45,7 +49,7 @@ module BootstrapFormExtensions
 
     def select_for_timespan method, selected, units, unit_options
       select_field_name = method.to_s.sub(/(_in_seconds)?$/, '_unit').to_sym
-      unit_options[:class] = [ "form-control", "timespan-unit", unit_options[:class] ].compact.join(' ')
+      unit_options[:class] = merge_css_classes 'form-control', 'timespan-unit', unit_options[:class]
       select = @template.select_tag select_field_name, @template.options_for_select(units, selected), unit_options
       content_tag :div, select, class: 'form-group'
     end

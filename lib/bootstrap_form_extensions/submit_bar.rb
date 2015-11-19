@@ -54,7 +54,7 @@ module BootstrapFormExtensions
       buttons.map do |options|
         text = options.delete :text
         url  = options.delete :url
-        options[:class] = [ 'btn', 'btn-default', "submitbar-#{type}-button", options[:class] ].compact.join(' ')
+        options[:class] = merge_css_classes 'btn', 'btn-default', "submitbar-#{type}-button", options[:class]
         options[:rel] ||= "nofollow"
         { text: text, url: url, options: options }
       end
