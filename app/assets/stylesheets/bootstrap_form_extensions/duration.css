@@ -1,0 +1,12 @@
+.duration-group input.hours {
+  width: 6em;
+}
+.duration-group input.minutes {
+  width: 4em;
+}
+.duration-group input.seconds {
+  width: 4em;
+}
+.duration-group input.milliseconds {
+  width: 5em;
+}

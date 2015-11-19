@@ -6,6 +6,7 @@ require 'bootstrap_form_extensions/scheduler'
 require 'bootstrap_form_extensions/date_time_pickers'
 require 'bootstrap-datepicker-rails'
 require 'bootstrap_form_extensions/select_or_new'
+require 'bootstrap_form_extensions/duration'
 
 module BootstrapFormExtensions
   module Rails
@@ -19,4 +20,5 @@ BootstrapForm::FormBuilder.send :include, BootstrapFormExtensions::SubmitBar,
                                           BootstrapFormExtensions::ArrayedField,
                                           BootstrapFormExtensions::Scheduler,
                                           BootstrapFormExtensions::DateTimePickers,
-                                          BootstrapFormExtensions::SelectOrNew
+                                          BootstrapFormExtensions::SelectOrNew,
+                                          BootstrapFormExtensions::Duration

@@ -30,7 +30,8 @@ def setup_test_fixture
                         list: [ 'One', 'Two' ],
                         variables: [ { name: 'var1', value: 1 }, { name: 'var2', value: 2 } ],
                         schedule: [[false],[false],[false],[false],[false],[false],[false]],
-                        start_at: Time.new(1971, 10, 21, 11, 30, 0, '+04:00')
+                        start_at: Time.new(1971, 10, 21, 11, 30, 0, '+04:00'),
+                        duration_in_seconds2: 5843.476
   @builder  = BootstrapForm::FormBuilder.new :thing, @thing, self, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10"
   @template = @builder.instance_variable_get :@template
   @template.stubs(:controller_name).returns('things')
