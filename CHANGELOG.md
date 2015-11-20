@@ -1,3 +1,9 @@
+## 1.1.0 (2015-11-20)
+
+Features:
+
+  - Add Duration control
+
 ## 1.0.4 (2015-11-17)
 
 Bugfixes:
