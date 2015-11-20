@@ -11,7 +11,7 @@
 
   Duration.VERSION = '1.0.4'
 
-  Duration.prototype.updateSeconds = function (e) {
+  Duration.prototype.updateSeconds = function (event) {
     var hidden       = this.$container.find('input.duration-seconds')
     var hours        = this.$container.find('input.hours').val()
     var minutes      = this.$container.find('input.minutes').val()

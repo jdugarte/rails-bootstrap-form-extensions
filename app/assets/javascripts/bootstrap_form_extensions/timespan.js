@@ -11,7 +11,7 @@
 
   Timespan.VERSION = '1.0.4'
 
-  Timespan.prototype.updateSeconds = function (e) {
+  Timespan.prototype.updateSeconds = function (event) {
     var hidden   = this.$container.find('.timespan-seconds')
     var quantity = this.$container.find('.timespan-quantity')
     var unit     = this.$container.find('.timespan-unit')
