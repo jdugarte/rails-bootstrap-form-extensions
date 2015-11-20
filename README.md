@@ -8,6 +8,8 @@
 - [SubmitBar](#submitbar)
 	- [Configuration](#configuration)
 	- [Default partial](#default-partial)
+- [Duration](#duration)
+  - [Duration without bootstrap](#duration-without-bootstrap)
 - [Timespan](#timespan)
 	- [Configuration](#configuration-1)
 - [ArrayedField](#arrayedfield)
@@ -167,6 +169,63 @@ This is the actual code of the default partial (located in app/views/bootstrap_f
 ```
 
 You can use it as a template to create your own partial(s).
+
+## Duration
+
+Having, for example, a column `duration_in_seconds` (a float column, to handle milliseconds), doing this:
+
+```erb
+<%= f.duration :duration_in_seconds %>
+```
+
+generates this html:
+
+```html
+<div class="form-group duration-group" data-duration="true">
+  <label class="control-label col-sm-2" for="thing_duration_in_seconds">Duration in seconds</label>
+  <div class="col-sm-10 form-inline">
+    <input class="duration-seconds" id="thing_duration_in_seconds" name="thing[duration_in_seconds]" type="hidden" value="0.000">
+    <input class="form-control hours" id="thing_hours" min="0" name="thing[hours]" type="number" value="0">
+    :
+    <input class="form-control minutes" id="thing_minutes" max="59" min="0" name="thing[minutes]" type="number" value="0">
+    :
+    <input class="form-control seconds" id="thing_seconds" max="59" min="0" name="thing[seconds]" type="number" value="0">
+    .
+    <input class="form-control milliseconds" id="thing_milliseconds" max="999" min="0" name="thing[milliseconds]" type="number" value="0">
+  </div>
+</div>
+```
+
+It accepts any option you'd pass to a form_group.
+
+### Duration without bootstrap
+
+There is a version of this control that doesn't apply all bootstrap styling:
+
+```erb
+<%= f.duration_without_bootstrap :duration_in_seconds %>
+```
+
+generates this html:
+
+```html
+<div class="duration-group" data-duration="true">
+  <input class="duration-seconds" id="thing_duration_in_seconds" name="thing[duration_in_seconds]" type="hidden" value="0">
+  <input class="hours" id="thing_hours" min="0" name="thing[hours]" type="number" value="0">
+  :
+  <input class="minutes" id="thing_minutes" max="59" min="0" name="thing[minutes]" type="number" value="0">
+  :
+  <input class="seconds" id="thing_seconds" max="59" min="0" name="thing[seconds]" type="number" value="0">
+  .
+  <input class="milliseconds" id="thing_milliseconds" max="999" min="0" name="thing[milliseconds]" type="number" value="0">
+</div>
+```
+
+If you still want to use the bootstrap styling, but not the form formatting (for instance, when you need to include this control in an inline form, or inside another element), you can customize like this:
+
+```erb
+<%= f.duration_without_bootstrap :duration_in_seconds, class: 'form-control', wrapper_class: 'form-inline' %>
+```
 
 ## Timespan
 
