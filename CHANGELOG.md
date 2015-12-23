@@ -1,3 +1,9 @@
+## 1.1.1 (2015-12-23)
+
+Features:
+
+  - Change Duration control styling to make the inputs look as if they were but one input
+
 ## 1.1.0 (2015-11-20)
 
 Features:
