@@ -53,7 +53,7 @@ module BootstrapFormExtensions
 
     def unit_field_builder unit, value, options
       options[:class] = merge_css_classes options[:class], unit
-      options.merge! min: 0
+      options.merge! min: 0, pattern: '[0-9]*'
       options.merge! max: (unit == 'milliseconds' ? 999 : 59) unless unit == 'hours'
       field = @template.number_field_tag "#{object_name}[#{unit}]", value, options
       separator = unit == 'milliseconds' ? '' : unit == 'seconds' ? '.' : ':'
