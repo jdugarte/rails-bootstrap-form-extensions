@@ -13,7 +13,7 @@
     this.createEvents()
   }
 
-  SelectOrNew.VERSION = '1.1.1'
+  SelectOrNew.VERSION = '1.1.2'
 
   SelectOrNew.prototype.createEvents = function () {
     this.$element.on('change.bsfe.select-or-new.data-api', 'select', this.changeSelection.bind(this))

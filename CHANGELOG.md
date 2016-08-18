@@ -1,3 +1,9 @@
+## 1.1.2 (2016-08-17)
+
+Bugfixes:
+
+  - Limit bootstrap-datepicker-rails to 1.4.*, because v. 1.5 breaks the date picker control
+
 ## 1.1.1 (2015-12-23)
 
 Features:

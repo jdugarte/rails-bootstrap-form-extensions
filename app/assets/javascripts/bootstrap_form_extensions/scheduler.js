@@ -12,7 +12,7 @@
     this.setInitialValues()
   }
 
-  Scheduler.VERSION = '1.1.1'
+  Scheduler.VERSION = '1.1.2'
 
   Scheduler.prototype.createEvents = function (event) {
     this.$element.on('click.bsfe.scheduler.data-api', 'table.scheduler-badge', this.editSchedule.bind(this))
