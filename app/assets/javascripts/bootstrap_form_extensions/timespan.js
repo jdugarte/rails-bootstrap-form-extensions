@@ -9,7 +9,7 @@
     this.$container.on('change.bsfe.timespan.data-api', '.timespan-quantity, .timespan-unit', this.updateSeconds.bind(this))
   }
 
-  Timespan.VERSION = '1.1.2'
+  Timespan.VERSION = '1.2.0'
 
   Timespan.prototype.updateSeconds = function (event) {
     var hidden   = this.$container.find('.timespan-seconds')
@@ -51,7 +51,7 @@
   // TIMESPAN DATA-API
   // =================
 
-  $(window).on('load page:load page:restore', function () {
+  $(window).on('load page:load turbolinks:load page:restore', function () {
     $('[data-timespan]').each(function () {
       Plugin.call(this)
     })

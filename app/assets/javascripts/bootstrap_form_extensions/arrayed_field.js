@@ -10,7 +10,7 @@
     this.$container.on('click.bsfe.arrayedfield.data-api', '.remove-arrayed-field-row', this.removeRow.bind(this))
   }
 
-  ArrayedField.VERSION = '1.1.2'
+  ArrayedField.VERSION = '1.2.0'
 
   ArrayedField.prototype.addRow = function (event) {
     var blueprint = this.$container.find(".blueprint-for-arrayed-field > .row").clone(true)
@@ -61,7 +61,7 @@
   // ARRAYED FIELD DATA-API
   // ======================
 
-  $(window).on('load page:load page:restore', function () {
+  $(window).on('load page:load turbolinks:load page:restore', function () {
     $('[data-arrayed-field]').each(function () {
       Plugin.call(this)
     })

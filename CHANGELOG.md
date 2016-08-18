@@ -1,3 +1,9 @@
+## 1.2.0 (2016-08-18)
+
+Features:
+
+  - Add Turbolinks 5's events (turbolinks:load)
+
 ## 1.1.2 (2016-08-17)
 
 Bugfixes:

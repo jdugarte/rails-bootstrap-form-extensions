@@ -12,7 +12,7 @@
     this.setInitialValues()
   }
 
-  Scheduler.VERSION = '1.1.2'
+  Scheduler.VERSION = '1.2.0'
 
   Scheduler.prototype.createEvents = function (event) {
     this.$element.on('click.bsfe.scheduler.data-api', 'table.scheduler-badge', this.editSchedule.bind(this))
@@ -217,7 +217,7 @@
   // SCHEDULER DATA-API
   // ==================
 
-  $(window).on('load page:load page:restore', function () {
+  $(window).on('load page:load turbolinks:load page:restore', function () {
     $('[data-scheduler]').each(function () {
       Plugin.call(this)
     })

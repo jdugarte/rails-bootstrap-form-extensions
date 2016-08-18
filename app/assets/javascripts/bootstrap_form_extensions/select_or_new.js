@@ -13,7 +13,7 @@
     this.createEvents()
   }
 
-  SelectOrNew.VERSION = '1.1.2'
+  SelectOrNew.VERSION = '1.2.0'
 
   SelectOrNew.prototype.createEvents = function () {
     this.$element.on('change.bsfe.select-or-new.data-api', 'select', this.changeSelection.bind(this))
@@ -67,7 +67,7 @@
   // SELECT-OR-NEW DATA-API
   // ======================
 
-  $(window).on('load page:load page:restore', function () {
+  $(window).on('load page:load turbolinks:load page:restore', function () {
     $('[data-select-or-new]').each(function () {
       Plugin.call(this)
     })

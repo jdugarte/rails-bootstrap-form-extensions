@@ -16,7 +16,7 @@
     $(element).timepicker($.extend(defaults, options))
   }
 
-  TimePicker.VERSION = '1.1.2'
+  TimePicker.VERSION = '1.2.0'
 
 
   // TIME PICKER PLUGIN DEFINITION
@@ -49,7 +49,7 @@
   // TIME PICKER DATA-API
   // ====================
 
-  $(window).on('load page:load page:restore', function () {
+  $(window).on('load page:load turbolinks:load page:restore', function () {
     $('[data-provide="timepicker"]').each(function () {
       var $picker = $(this)
       var options = $picker.html5data('time')

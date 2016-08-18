@@ -9,7 +9,7 @@
     this.$container.on('change.bsfe.duration.data-api', 'input.hours, input.minutes, input.seconds, input.milliseconds', this.updateSeconds.bind(this))
   }
 
-  Duration.VERSION = '1.0.4'
+  Duration.VERSION = '1.2.0'
 
   Duration.prototype.updateSeconds = function (event) {
     var hidden       = this.$container.find('input.duration-seconds')
@@ -55,7 +55,7 @@
   // DURATION DATA-API
   // =================
 
-  $(window).on('load page:load page:restore', function () {
+  $(window).on('load page:load turbolinks:load page:restore', function () {
     $('[data-duration]').each(function () {
       Plugin.call(this)
     })
