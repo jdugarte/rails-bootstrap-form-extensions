@@ -9,7 +9,7 @@
     this.$container.on('change.bsfe.duration.data-api', 'input.hours, input.minutes, input.seconds, input.milliseconds', this.updateSeconds.bind(this))
   }
 
-  Duration.VERSION = '1.2.0'
+  Duration.VERSION = '1.2.1'
 
   Duration.prototype.updateSeconds = function (event) {
     var hidden       = this.$container.find('input.duration-seconds')

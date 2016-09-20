@@ -32,7 +32,7 @@ module BootstrapFormExtensions
         inputs = fields.map do |field|
           case field[:type]
           when :select
-            @template.select_tag nil, @template.options_for_select(field[:options], values[field[:name].to_s]), class: 'form-control'
+            @template.select_tag "#{object_name}[#{method}][][#{field[:name]}]", @template.options_for_select(field[:options], values[field[:name].to_s]), class: 'form-control'
           else
             @template.text_field_tag "#{object_name}[#{method}][][#{field[:name]}]", values[field[:name].to_s], class: 'form-control', placeholder: field[:name]
           end

@@ -1,3 +1,9 @@
+## 1.2.1 (2016-09-20)
+
+Bugfixes:
+
+  - arrayed_json_field was not generating the field name for selects
+
 ## 1.2.0 (2016-08-18)
 
 Features:
