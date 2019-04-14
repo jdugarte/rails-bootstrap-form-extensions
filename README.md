@@ -1,5 +1,7 @@
 If you are using Bootstrap v3, refer to the legacy [legacy-1.2.1](https://github.com/jdugarte/rails-bootstrap-form-extensions/tree/legacy-1.2.1) branch.
 
+---
+
 # Rails Bootstrap Form Extensions
 
 **Table of Contents**
