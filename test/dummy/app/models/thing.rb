@@ -10,8 +10,6 @@ class Thing < ActiveRecord::Base
   serialize :variables, Array
   serialize :schedule, BootstrapFormExtensions::Scheduler.serializer
 
-  date_time_attributes_for :start_at
-
   attr_accessor :new_category
 
   def save_with_category

@@ -39,18 +39,18 @@ describe("SelectOrNew", function() {
       var $element, $select, $input, $inputGroup
       var fixture = function() {
         return '<div class="form-group" data-select-or-new="true">'
-              +'  <label class="control-label col-sm-2" for="thing_category">Category</label>'
-              +'  <div class="col-sm-10">'
-              +'    <select class="form-control" id="thing_category" name="thing[category]">'
+              +'  <label class="control-label col-2" for="thing_category">Category</label>'
+              +'  <div class="col-10">'
+              +'    <select class="form-control" name="thing[category]" id="thing_category">'
               +'      <option value="">Please select</option>'
               +'      <option value="1">One</option>'
               +'      <option value="2">Two</option>'
               +'      <option value="0">New...</option>'
               +'    </select>'
               +'    <div class="input-group" style="display: none;">'
-              +'      <input class="form-control" id="thing_new_category" name="thing[new_category]" placeholder="New..." type="text">'
-              +'      <div class="input-group-addon select-or-new-cancel">'
-              +'        <i class="text-danger glyphicon glyphicon-remove"></i>'
+              +'      <input type="text" name="thing[new_category]" id="thing_new_category" value="New Category" class="form-control" placeholder="New...">'
+              +'      <div class="input-group-append select-or-new-cancel">'
+              +'        <button class="btn btn-outline-danger" type="button">×</button>'
               +'      </div>'
               +'    </div>'
               +'  </div>'
@@ -64,7 +64,7 @@ describe("SelectOrNew", function() {
         $select     = $element.find('select')
         $input      = $element.find('input')
         $inputGroup = $element.find('div.input-group')
-        $cancelNew  = $element.find('div.select-or-new-cancel')
+        $cancelNew  = $element.find('div.select-or-new-cancel button')
 
         $element.bootstrapSelectOrNew()
       })

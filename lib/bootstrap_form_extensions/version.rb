@@ -1,3 +1,3 @@
 module BootstrapFormExtensions
-  VERSION = "1.2.1"
+  VERSION = "4.0.0"
 end

@@ -1,4 +1,4 @@
-class AddCategory < ActiveRecord::Migration
+class AddCategory < ActiveRecord::Migration[4.2]
 
   def change
     create_table :categories do |t|

@@ -1,3 +1,9 @@
+## 4.0.0 (2019-04-13)
+
+Features:
+
+  - Upgrade to bootdtrap v4
+
 ## 1.2.1 (2016-09-20)
 
 Bugfixes:

@@ -9,18 +9,23 @@ class SubmitBarTest < ActionView::TestCase
 
   test "SubmitBar with default values" do
     expected = <<-HTML
-<div class="form-group col-sm-12">
-  <div class='pull-left submitbar-left'>
-      <div class="btn-group dropup submitbar-submit-group">
-        <button type="submit" class="btn btn-primary submitbar-save">Save</button>
-          <button type="button" class="btn btn-primary dropdown-toggle submitbar-next-action-toggle" data-toggle="dropdown">
-            <span class="caret"></span>
-            <span class="sr-only">Toggle Dropdown</span>
+<div class='form-group col-12'>
+  <div class='float-left submitbar-left'>
+      <div class='btn-group dropup submitbar-submit-group'>
+        <button type='submit' class='btn btn-primary submitbar-save'>
+          Save
+        </button>
+          <button type='button' class='btn btn-primary dropdown-toggle dropdown-toggle-split submitbar-next-action-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+            <span class='sr-only'>Toggle Dropdown</span>
           </button>
-          <ul class="dropdown-menu submitbar-next-action-menu" role="menu">
-              <li><button type="submit" name="next_action" class="btn-link submitbar-duplicate" value="duplicate">Save and duplicate</button></li>
-              <li><button type="submit" name="next_action" class="btn-link submitbar-new" value="new">Save and new</button></li>
-          </ul>
+          <div class='dropdown-menu submitbar-next-action-menu' role='menu'>
+              <button type='submit' name='next_action' class='dropdown-item submitbar-duplicate' value='duplicate'>
+                Save and duplicate
+              </button>
+              <button type='submit' name='next_action' class='dropdown-item submitbar-new' value='new'>
+                Save and new
+              </button>
+          </div>
       </div>
       <a class="btn btn-default submitbar-cancel" rel="nofollow" href="/things">Cancel</a>
   </div>
@@ -45,21 +50,21 @@ class SubmitBarTest < ActionView::TestCase
   test "don't show the submit menu" do
     @output_buffer = @builder.submit_bar show_submit_menu: false
     assert_select 'button.submitbar-next-action-toggle', count: 0
-    assert_select 'ul.submitbar-next-action-menu', count: 0
+    assert_select 'div.submitbar-next-action-menu', count: 0
     assert_select 'button[name=next_action]', count: 0
   end
 
   test "don't show the submit and duplicate button" do
     @output_buffer = @builder.submit_bar show_submit_and_dup_button: false
     assert_select 'button.submitbar-next-action-toggle', count: 1
-    assert_select 'ul.submitbar-next-action-menu', count: 1
+    assert_select 'div.submitbar-next-action-menu', count: 1
     assert_select 'button.submitbar-duplicate', count: 0
   end
 
   test "don't show the submit and new button" do
     @output_buffer = @builder.submit_bar show_submit_and_new_button: false
     assert_select 'button.submitbar-next-action-toggle', count: 1
-    assert_select 'ul.submitbar-next-action-menu', count: 1
+    assert_select 'div.submitbar-next-action-menu', count: 1
     assert_select 'button.submitbar-new', count: 0
   end
 

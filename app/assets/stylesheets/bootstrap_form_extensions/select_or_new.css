@@ -1,3 +1,6 @@
-.select-or-new-cancel {
-  cursor: pointer;
+.select-or-new-cancel button {
+  font-size: 1.8em;
+  line-height: 1.0;
+  font-weight: 600;
+  padding: 0 0.5rem 0.2rem;
 }

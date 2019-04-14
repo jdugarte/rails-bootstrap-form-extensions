@@ -17,7 +17,7 @@
 
   SelectOrNew.prototype.createEvents = function () {
     this.$element.on('change.bsfe.select-or-new.data-api', 'select', this.changeSelection.bind(this))
-    this.$element.on('click.bsfe.select-or-new.data-api', 'div.input-group-addon', this.cancelNew.bind(this))
+    this.$element.on('click.bsfe.select-or-new.data-api', 'div.input-group-append button', this.cancelNew.bind(this))
   }
 
   SelectOrNew.prototype.changeSelection = function (event) {

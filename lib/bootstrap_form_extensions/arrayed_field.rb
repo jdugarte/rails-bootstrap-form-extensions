@@ -15,7 +15,7 @@ module BootstrapFormExtensions
 
     def arrayed_json_field method, fields, **options
       fields = parse_fields_for_arrayed_json fields
-      col_class = options.fetch :col_class, 'col-sm-2'
+      col_class = options.fetch :col_class, 'col-2'
 
       blueprint = fields.map do |field|
         case field[:type]
@@ -70,17 +70,17 @@ module BootstrapFormExtensions
       end
     end
 
-    def arrayed_field_row_builder args, col_class: 'col-sm-11'
+    def arrayed_field_row_builder args, col_class: 'col-11'
       args = [ args ].flatten
 
       inputs = args.inject(''.html_safe) do |content, input|
         content << content_tag(:div, input, class: col_class)
       end
 
-      remove_button = @template.link_to glyphicon_tag('trash'), 'javascript:void(0);', class: 'btn btn-default remove-arrayed-field-row'
-      remove_button = content_tag :div, remove_button, class: 'col-sm-1'
+      remove_button = @template.link_to '&times;'.html_safe, 'javascript:void(0);', class: 'btn btn-default remove-arrayed-field-row'
+      remove_button = content_tag :div, remove_button, class: 'col-1'
 
-      content_tag :div, inputs + remove_button, class: 'row voffset1'
+      content_tag :div, inputs + remove_button, class: 'row mt-1'
     end
 
     def arrayed_field_blueprint_builder row
@@ -88,9 +88,9 @@ module BootstrapFormExtensions
     end
 
     def form_group_builder_for_arrayed_field method, blueprint, options, &row_builder_block
-      add_button = @template.link_to glyphicon_tag('plus'), 'javascript:void(0);', class: 'btn btn-default add-arrayed-field-row'
-      add_button = content_tag :div, add_button, class: 'col-sm-12'
-      add_button = content_tag :div, add_button, class: 'row voffset1'
+      add_button = @template.link_to '+', 'javascript:void(0);', class: 'btn btn-default add-arrayed-field-row'
+      add_button = content_tag :div, add_button, class: 'col-12'
+      add_button = content_tag :div, add_button, class: 'row mt-1'
 
       rows = object.send(method) rescue []
       rows = [] unless rows.is_a? Array

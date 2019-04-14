@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119160842) do
+ActiveRecord::Schema.define(version: 2015_11_19_160842) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
   end
 
   create_table "things", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "duration_in_seconds"
-    t.text     "urls"
-    t.text     "list"
-    t.text     "variables"
-    t.text     "schedule"
+    t.string "name"
+    t.integer "duration_in_seconds"
+    t.text "urls"
+    t.text "list"
+    t.text "variables"
+    t.text "schedule"
     t.datetime "start_at"
-    t.integer  "category_id"
-    t.float    "duration_in_seconds2"
+    t.integer "category_id"
+    t.float "duration_in_seconds2"
   end
 
 end

@@ -1,3 +1,5 @@
+If you are using Bootstrap v3, refer to the legacy [legacy-1.2.1](https://github.com/jdugarte/rails-bootstrap-form-extensions/tree/legacy-1.2.1) branch.
+
 # Rails Bootstrap Form Extensions
 
 **Table of Contents**
@@ -20,9 +22,6 @@
 	- [Model](#Model)
 		- [Default selection](#Default-selection)
 - [Date and Time Pickers](#date-and-time-pickers)
-	- [DatePicker](#datepicker)
-	- [TimePicker](#timepicker)
-	- [DateTimePicker](#datetimepicker)
 - [SelectOrNew](#selectornew)
 	- [Handling the new value](#Handling-the-new-value)
 - [Contributing](#contributing)
@@ -30,17 +29,14 @@
 ## Requirements
 
 * Ruby 2.0+
-* Rails 4.0+
-* Twitter Bootstrap 3.0+
+* Rails 5.0+
+* Twitter Bootstrap 4.0+
 
 ## Dependencies
 
 This gem will install the following gems/libraries:
 
 * [Rails Bootstrap Forms](https://github.com/bootstrap-ruby/rails-bootstrap-forms), ~> 2.3
-* [Bootstrap Datepicker for Rails](https://github.com/Nerian/bootstrap-datepicker-rails), ~> 1.4.0
-* [bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker), 1.5.0
-* [Bootstrap Timepicker](https://github.com/jdewit/bootstrap-timepicker), 0.5.0
 * [$.html5data](http://markdalgleish.com/projects/jquery-html5data/), 1.0
 
 ## Installation
@@ -82,18 +78,17 @@ Using all the default arguments, doing this:
 generates a form group, with two buttons: Save (a dropdown menu, that includes 'Save and duplicate', and 'Save and new' options), and Cancel:
 
 ```html
-<div class="form-group col-sm-12">
-  <div class='pull-left submitbar-left'>
-    <div class="btn-group dropup submitbar-submit-group">
-      <button type="submit" class="btn btn-primary submitbar-save">Save</button>
-      <button type="button" class="btn btn-primary dropdown-toggle submitbar-next-action-toggle" data-toggle="dropdown">
-        <span class="caret"></span>
-        <span class="sr-only">Toggle Dropdown</span>
+<div class='form-group col-12'>
+  <div class='float-left submitbar-left'>
+    <div class='btn-group dropup submitbar-submit-group'>
+      <button type='submit' class='btn btn-primary submitbar-save'>Save</button>
+      <button type='button' class='btn btn-primary dropdown-toggle dropdown-toggle-split submitbar-next-action-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+        <span class='sr-only'>Toggle Dropdown</span>
       </button>
-      <ul class="dropdown-menu submitbar-next-action-menu" role="menu">
-        <li><button type="submit" name="next_action" class="btn-link submitbar-duplicate" value="duplicate">Save and duplicate</button></li>
-        <li><button type="submit" name="next_action" class="btn-link submitbar-new" value="new">Save and new</button></li>
-      </ul>
+      <div class='dropdown-menu submitbar-next-action-menu' role='menu'>
+        <button type='submit' name='next_action' class='dropdown-item submitbar-duplicate' value='duplicate'>Save and duplicate</button>
+        <button type='submit' name='next_action' class='dropdown-item submitbar-new' value='new'>Save and new</button>
+      </div>
     </div>
     <a class="btn btn-default submitbar-cancel" rel="nofollow" href="/things">Cancel</a>
   </div>
@@ -182,8 +177,8 @@ generates this html:
 
 ```html
 <div class="form-group duration-group" data-duration="true">
-  <label class="control-label col-sm-2" for="thing_duration_in_seconds">Duration in seconds</label>
-  <div class="col-sm-10 form-inline">
+  <label class="control-label col-2" for="thing_duration_in_seconds">Duration in seconds</label>
+  <div class="col-10 form-inline">
     <input class="duration-seconds" id="thing_duration_in_seconds" name="thing[duration_in_seconds]" type="hidden" value="0.000">
     <input class="form-control hours" id="thing_hours" min="0" name="thing[hours]" type="number" value="0">
     :
@@ -308,10 +303,10 @@ Given a column that holds an array of hashes, this helper adds a multiple line, 
 The generated html contains multiple lines like this:
 
 ```html
-<div class="col-sm-2">
+<div class="col-2">
   <input type="text" name="thing[variables][][name]" class="form-control" placeholder="name" />
 </div>
-<div class="col-sm-2">
+<div class="col-2">
   <input type="text" name="thing[variables][][value]" class="form-control" placeholder="value" />
 </div>
 ```
@@ -327,13 +322,13 @@ The list of fields in the hash can be customized further:
 The generated html for each element of the array would look something like this:
 
 ```html
-<div class="col-sm-2">
+<div class="col-2">
   <select class="form-control">
     <option value="var1">One</option>
     <option value="var2">Two</option>
   </select>
 </div>
-<div class="col-sm-2">
+<div class="col-2">
   <input class="form-control" name="thing[variables][][value]" placeholder="value" type="text">
 </div>
 ```
@@ -432,129 +427,7 @@ This would result in:
 
 ## Date and Time Pickers
 
-### DatePicker
-
-This helper is a wrapper for the [bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker) gem. Using all the default arguments, doing this:
-
-```erb
-<%= f.date_picker :start_date %>
-```
-
-generates this html:
-
-```html
-<div class="form-group">
-  <label class="control-label col-sm-2" for="thing_start_date">Start date</label>
-  <div class="col-sm-10">
-    <div class="input-group date" data-date-autoclose="true" data-date-disable-touch-keyboard="true" data-date-enable-on-readonly="false" data-date-format="yyyy-mm-dd" data-date-show-on-focus="false" data-date-today-btn="linked" data-date-today-highlight="true" data-provide="datepicker">
-      <input class="form-control" id="thing_start_date" name="thing[start_date]" size="10" type="text" value="1971-10-21">
-      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-    </div>
-  </div>
-</div>
-```
-
-It accepts any option you'd pass to a form_group. You can also pass any  [options to the bootstrap-datepicker gem](http://bootstrap-datepicker.readthedocs.org/en/stable/options.html), like this:
-
-```erb
-<%= f.date_picker :start_date, widget: { clear_btn: true } %>
-```
-
-This helper sets these bootstrap-datepicker's defaults (you can overwrite these too, in the same way shown above):
-
-| Option | Default |
-| ------ | --------|
-| today_highlight        | true |
-| format                 | 'yyyy-mm-dd' |
-| today_btn              | 'linked' |
-| autoclose              | true |
-| disable_touch_keyboard | true |
-| enable_on_readonly     | false |
-| show_on_focus          | false |
-
-Check [bootstrap-datepicker's documentation](http://bootstrap-datepicker.readthedocs.org/en/stable/options.html) for more details on these and other available options.
-
-### TimePicker
-
-This helper is a wrapper for the [Bootstrap Timepicker](https://github.com/jdewit/bootstrap-timepicker) library. Using all the default arguments, doing this:
-
-```erb
-<%= f.time_picker :start_time %>
-```
-
-generates this html:
-
-```html
-<div class="form-group">
-  <label class="control-label col-sm-2" for="thing_start_time">Start time</label>
-  <div class="col-sm-10">
-    <div class="input-group bootstrap-timepicker">
-      <input class="form-control" data-provide="timepicker" id="thing_start_time" name="thing[start_time]" size="8" type="text" value="07:30:00">
-      <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-    </div>
-  </div>
-</div>
-```
-
-It accepts any option you'd pass to a form_group. You can also pass any  [options to the Bootstrap Timepicker library](http://m3wolf.github.io/bootstrap3-timepicker/) like this:
-
-```erb
-<%= f.time_picker :start_time, widget: { disable_mousewheel: true } %>
-```
-
-This helper sets these bootstrap-datepicker's defaults (you can overwrite these too, in the same way shown above):
-
-| Option | Default |
-| ------ | --------|
-| minute_step   | 1 |
-| show_seconds  | true |
-| second_step   | 1 |
-| show_meridian | false |
-| default_time  | false |
-
-Check [Bootstrap Timepicker's documentation](http://m3wolf.github.io/bootstrap3-timepicker/) for more details on these and other available options.
-
-### DateTimePicker
-
-This helper puts the DatePicker and TimePicker together for a DateTime field. Using all the default arguments, doing this:
-
-```erb
-<%= f.date_time_picker :start_at %>
-```
-
-generates this html:
-
-```html
-<div class="form-group">
-  <label class="control-label col-sm-2" for="thing_start_at">Start at</label>
-  <div class="col-sm-10 form-inline">
-    <div class="form-group">
-      <div class="input-group date" data-date-autoclose="true" data-date-disable-touch-keyboard="true" data-date-enable-on-readonly="false" data-date-format="yyyy-mm-dd" data-date-show-on-focus="false" data-date-today-btn="linked" data-date-today-highlight="true" data-provide="datepicker">
-        <input class="form-control" id="thing_start_date" name="thing[start_date]" size="10" type="text" value="1971-10-21">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-      </div>
-    </div>&nbsp;&nbsp;
-    <div class="form-group">
-      <div class="input-group bootstrap-timepicker">
-        <input class="form-control" data-provide="timepicker" id="thing_start_time" name="thing[start_time]" size="8" type="text" value="07:30:00">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-      </div>
-    </div>
-  </div>
-</div>
-```
-
-The helper assumes the existance of virtual attributes for the data and time, following the naming convention used by the [Date Time Attributes](https://github.com/jdugarte/date_time_attributes) gem. You can specify the names of the virtual attributes like this:
-
-```erb
-<%= f.date_time_picker :start_at, date_method: :start_at_date, time_method: :start_at_time %>
-```
-
-You can pass options to each control, date and time, like this:
-
-```erb
-<%= date_time_picker :start_at, date_options: { widget: { clear_btn: true } }, time_options: { widget: { disable_mousewheel: true } } %>
-```
+Date and Time Pickers have been deprecated since bootstrap form already offers good replacements for them.
 
 ## SelectOrNew
 
@@ -568,18 +441,18 @@ generates this html:
 
 ```html
 <div class="form-group" data-select-or-new="true">
-  <label class="control-label col-sm-2" for="thing_category">Category</label>
-  <div class="col-sm-10">
-    <select class="form-control" id="thing_category" name="thing[category]">
+  <label class="control-label col-2" for="thing_category">Category</label>
+  <div class="col-10">
+    <select class="form-control" name="thing[category]" id="thing_category">
       <option value="">Please select</option>
       <option value="1">One</option>
       <option value="2">Two</option>
       <option value="0">New...</option>
     </select>
     <div class="input-group" style="display: none;">
-      <input class="form-control" id="thing_new_category" name="thing[new_category]" placeholder="New..." type="text">
-      <div class="input-group-addon select-or-new-cancel">
-        <i class="text-danger glyphicon glyphicon-remove"></i>
+      <input type="text" name="thing[new_category]" id="thing_new_category" value="New Category" class="form-control" placeholder="New...">
+      <div class="input-group-append select-or-new-cancel">
+        <button class="btn btn-outline-danger" type="button">×</button>
       </div>
     </div>
   </div>
