@@ -1,3 +1,7 @@
+⚠️ **This documentation refers to bootstrap_form_extensions 1.2.x, which supports Bootstrap v3.** If you are using Bootstrap v4, refer to the [master](https://github.com/jdugarte/rails-bootstrap-form-extensions/) branch.
+
+---
+
 # Rails Bootstrap Form Extensions
 
 **Table of Contents**
