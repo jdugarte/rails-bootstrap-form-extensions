@@ -38,7 +38,7 @@ If you are using Bootstrap v3, refer to the legacy [legacy-1.2.1](https://github
 
 This gem will install the following gems/libraries:
 
-* [Rails Bootstrap Forms](https://github.com/bootstrap-ruby/rails-bootstrap-forms), ~> 2.3
+* [Rails Bootstrap Forms](https://github.com/bootstrap-ruby/rails-bootstrap-forms), ~> 4.x
 * [$.html5data](http://markdalgleish.com/projects/jquery-html5data/), 1.0
 
 ## Installation
