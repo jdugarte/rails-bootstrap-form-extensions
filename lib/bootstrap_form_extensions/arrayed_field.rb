@@ -70,15 +70,15 @@ module BootstrapFormExtensions
       end
     end
 
-    def arrayed_field_row_builder args, col_class: 'col-11'
+    def arrayed_field_row_builder args, col_class: 'col'
       args = [ args ].flatten
 
       inputs = args.inject(''.html_safe) do |content, input|
         content << content_tag(:div, input, class: col_class)
       end
 
-      remove_button = @template.link_to '&times;'.html_safe, 'javascript:void(0);', class: 'btn btn-default remove-arrayed-field-row'
-      remove_button = content_tag :div, remove_button, class: 'col-1'
+      remove_button = @template.link_to '&times;'.html_safe, 'javascript:void(0);', class: 'btn btn-outline-danger remove-arrayed-field-row'
+      remove_button = content_tag :div, remove_button, class: 'col-auto ml-auto'
 
       content_tag :div, inputs + remove_button, class: 'row mt-1'
     end
@@ -88,7 +88,7 @@ module BootstrapFormExtensions
     end
 
     def form_group_builder_for_arrayed_field method, blueprint, options, &row_builder_block
-      add_button = @template.link_to '+', 'javascript:void(0);', class: 'btn btn-default add-arrayed-field-row'
+      add_button = @template.link_to '+', 'javascript:void(0);', class: 'btn btn-outline-primary add-arrayed-field-row'
       add_button = content_tag :div, add_button, class: 'col-12'
       add_button = content_tag :div, add_button, class: 'row mt-1'
 

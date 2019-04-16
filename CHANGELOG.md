@@ -1,3 +1,15 @@
+## 4.0.2 (2019-04-16)
+
+Bugfixes:
+
+  - Fix arrayed_field's buttons styling
+
+## 4.0.1 (2019-04-13)
+
+Bugfixes:
+
+  - Fix bootstrap_form dependency version
+
 ## 4.0.0 (2019-04-13)
 
 Features:
