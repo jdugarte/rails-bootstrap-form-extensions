@@ -92,7 +92,7 @@ generates a form group, with two buttons: Save (a dropdown menu, that includes '
         <button type='submit' name='next_action' class='dropdown-item submitbar-new' value='new'>Save and new</button>
       </div>
     </div>
-    <a class="btn btn-default submitbar-cancel" rel="nofollow" href="/things">Cancel</a>
+    <a class="btn btn-light submitbar-cancel" rel="nofollow" href="/things">Cancel</a>
   </div>
 </div>
 ```
@@ -152,7 +152,7 @@ This is the actual code of the default partial (located in app/views/bootstrap_f
       <%= link_to text, url, options %>
     <% end %>
     <% if show_cancel_button %>
-      <%= link_to cancel_button_text, cancel_button_url, class: "btn btn-default submitbar-cancel", rel: "nofollow" %>
+      <%= link_to cancel_button_text, cancel_button_url, class: "btn btn-light submitbar-cancel", rel: "nofollow" %>
     <% end %>
   </div>
   <% if right_buttons.any? %>

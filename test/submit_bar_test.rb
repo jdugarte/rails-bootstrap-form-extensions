@@ -27,7 +27,7 @@ class SubmitBarTest < ActionView::TestCase
               </button>
           </div>
       </div>
-      <a class="btn btn-default submitbar-cancel" rel="nofollow" href="/things">Cancel</a>
+      <a class="btn btn-light submitbar-cancel" rel="nofollow" href="/things">Cancel</a>
   </div>
 </div>
     HTML

@@ -139,7 +139,7 @@
              "        <div class='modal-body'>" + this.scheduleTable() + this.linksAllNone() + "</div>" +
              "        <div class='modal-footer'>" +
              "          <button class='btn btn-primary apply' type='button' data-dismiss='modal'>Apply</button>" +
-             "          <button class='btn btn-default cancel' type='button' data-dismiss='modal'>Cancel</button>" +
+             "          <button class='btn btn-light cancel' type='button' data-dismiss='modal'>Cancel</button>" +
              "        </div>" +
              "      </div>" +
              "    </div>" +
