@@ -1,3 +1,4 @@
+require 'bootstrap_form'
 require 'bootstrap_form/form_builder'
 require 'bootstrap_form_extensions/submit_bar'
 require 'bootstrap_form_extensions/timespan'
