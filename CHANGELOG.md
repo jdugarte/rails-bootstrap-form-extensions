@@ -1,3 +1,16 @@
+## 4.0.3 (2019-04-25)
+
+Features:
+
+  - Change default buttons to btn-light
+  - Update documentation and tests from the previous changes
+
+Bugfixes:
+
+  - Fix tests, missing module BootstrapForm::Helpers
+  - Fix form group options for SelectOrNew
+  - Fix error message for Timespan  
+
 ## 4.0.2 (2019-04-16)
 
 Bugfixes:
