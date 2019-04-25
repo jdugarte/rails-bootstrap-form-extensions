@@ -37,14 +37,12 @@ module BootstrapFormExtensions
 
       quantity_options[:size] ||= 5
       quantity_options[:class] = merge_css_classes 'form-control', 'timespan-quantity', quantity_options[:class]
+      quantity_options[:class] = merge_css_classes 'is-invalid', quantity_options[:class] if inline_error?(method)
 
       field = @template.text_field_tag text_field_name, quantity, quantity_options
-      field << generate_help(method, nil)
+      field << generate_error(method)
 
-      css_class = 'form-group'
-      css_class << " #{error_class}" if has_error?(method)
-
-      content_tag :div, field, class: css_class
+      content_tag :div, field, class: 'form-group'
     end
 
     def select_for_timespan method, selected, units, unit_options
