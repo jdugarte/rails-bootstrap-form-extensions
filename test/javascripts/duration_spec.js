@@ -38,12 +38,15 @@ describe("Duration", function() {
 
       var $element
       var fixture = function() {
-        return '<div class="duration-group" data-duration="true">'
-             + '  <input class="duration-seconds" id="thing_duration_in_seconds2" name="thing[duration_in_seconds2]" type="hidden" value="0">'
-             + '  <input class="hours" id="thing_hours" min="0" name="thing[hours]" type="number" value="0">:'
-             + '  <input class="minutes" id="thing_minutes" max="59" min="0" name="thing[minutes]" type="number" value="0">:'
-             + '  <input class="seconds" id="thing_seconds" max="59" min="0" name="thing[seconds]" type="number" value="0">.'
-             + '  <input class="milliseconds" id="thing_milliseconds" max="999" min="0" name="thing[milliseconds]" type="number" value="0">'
+        return '<div class="form-group duration-group row" data-duration="true">'
+             + '  <label class="col-form-label col-2" for="thing_duration_in_seconds2">Duration in seconds2</label>'
+             + '  <div class="col-10 form-inline">'
+             + '    <input class="duration-seconds" data-formatted="0:00:00.000" type="hidden" value="0" name="thing[duration_in_seconds2]" id="thing_duration_in_seconds2" />'
+             + '    <input type="number" name="thing[hours]" id="thing_hours" value="0" class="form-control hours" min="0" pattern="[0-9]*" />:'
+             + '    <input type="number" name="thing[minutes]" id="thing_minutes" value="0" class="form-control minutes" min="0" pattern="[0-9]*" max="59" />:'
+             + '    <input type="number" name="thing[seconds]" id="thing_seconds" value="0" class="form-control seconds" min="0" pattern="[0-9]*" max="59" />.'
+             + '    <input type="number" name="thing[milliseconds]" id="thing_milliseconds" value="0" class="form-control milliseconds" min="0" pattern="[0-9]*" max="999" />'
+             + '  </div>'
              + '</div>'
       }
 

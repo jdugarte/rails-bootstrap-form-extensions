@@ -127,7 +127,7 @@ BootstrapFormExtensions::SubmitBar.show_submit_menu = false
 This is the actual code of the default partial (located in app/views/bootstrap_form_extensions/_submit_bar.html.erb):
 
 ```erb
-<div class="form-group">
+<div class="form-group col-12">
   <div class='pull-left submitbar-left'>
     <% if show_submit_button %>
       <div class="btn-group dropup submitbar-submit-group">
@@ -178,8 +178,8 @@ Having, for example, a column `duration_in_seconds` (a float column, to handle m
 generates this html:
 
 ```html
-<div class="form-group duration-group" data-duration="true">
-  <label class="control-label col-2" for="thing_duration_in_seconds">Duration in seconds</label>
+<div class="form-group duration-group row" data-duration="true">
+  <label class="col-form-label col-2" for="thing_duration_in_seconds">Duration in seconds</label>
   <div class="col-10 form-inline">
     <input class="duration-seconds" id="thing_duration_in_seconds" name="thing[duration_in_seconds]" type="hidden" value="0.000">
     <input class="form-control hours" id="thing_hours" min="0" name="thing[hours]" type="number" value="0">
@@ -237,11 +237,11 @@ generates this html:
 ```html
 <span data-timespan="true">
   <input class="timespan-seconds" type="hidden" value="3600" name="thing[duration_in_seconds]" id="thing_duration_in_seconds" />
-  <div class="form-group">
+  <div class="form-group row">
     <input type="text" name="duration_quantity" id="duration_quantity" value="1" size="5" class="form-control timespan-quantity" />
   </div>
   &nbsp;
-  <div class="form-group">
+  <div class="form-group row">
     <select name="duration_unit" id="duration_unit" class="form-control timespan-unit">
       <option selected="selected" value="1">seconds</option>
       <option value="60">minutes</option>
@@ -442,8 +442,8 @@ This helpers creates a select tag with an extra "New..." option at the end, that
 generates this html:
 
 ```html
-<div class="form-group" data-select-or-new="true">
-  <label class="control-label col-2" for="thing_category">Category</label>
+<div class="form-group row" data-select-or-new="true">
+  <label class="col-form-label col-2" for="thing_category">Category</label>
   <div class="col-10">
     <select class="form-control" name="thing[category]" id="thing_category">
       <option value="">Please select</option>

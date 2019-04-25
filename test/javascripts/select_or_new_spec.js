@@ -38,8 +38,8 @@ describe("SelectOrNew", function() {
 
       var $element, $select, $input, $inputGroup
       var fixture = function() {
-        return '<div class="form-group" data-select-or-new="true">'
-              +'  <label class="control-label col-2" for="thing_category">Category</label>'
+        return '<div class="form-group row" data-select-or-new="true">'
+              +'  <label class="col-form-label col-2" for="thing_category">Category</label>'
               +'  <div class="col-10">'
               +'    <select class="form-control" name="thing[category]" id="thing_category">'
               +'      <option value="">Please select</option>'

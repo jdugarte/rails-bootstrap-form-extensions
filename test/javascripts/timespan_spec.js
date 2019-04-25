@@ -40,11 +40,11 @@ describe("Timespan", function() {
       var fixture = function() {
         return '<span data-timespan="true">'
               +'  <input class="timespan-seconds" type="hidden" value="0" name="duration_in_seconds" id="duration_in_seconds">'
-              +'  <div class="form-group">'
+              +'  <div class="form-group row">'
               +'    <input type="text" name="duration_quantity" id="duration_quantity" value="1" size="5" class="form-control timespan-quantity">'
               +'  </div>'
               +'  &nbsp;'
-              +'  <div class="form-group">'
+              +'  <div class="form-group row">'
               +'    <select name="duration_unit" id="duration_unit" class="form-control timespan-unit">'
               +'      <option value="3600" selected>hours</option>'
               +'      <option value="86400">days</option>'

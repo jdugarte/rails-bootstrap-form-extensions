@@ -38,8 +38,8 @@ describe("Scheduler", function() {
 
       var $element
       var fixture = function() {
-        return '<div class="form-group" data-scheduler="true">'
-              +'  <label class="control-label col-2" for="thing_schedule">Schedule</label>'
+        return '<div class="form-group row" data-scheduler="true">'
+              +'  <label class="col-form-label col-2" for="thing_schedule">Schedule</label>'
               +'  <div class="col-10">'
               +'    <input class="scheduler-hidden-field" id="thing_schedule" name="thing[schedule]" type="hidden" value="[[false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],[false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],[false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],[false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],[false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],[false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],[false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]]">'
               +'    <table class="scheduler-badge">'
