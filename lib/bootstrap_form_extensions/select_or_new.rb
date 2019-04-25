@@ -26,9 +26,9 @@ module BootstrapFormExtensions
       text = content_tag :div, text + icon, class: 'input-group', style: (new_is_selected ?  '' : 'display: none;')
 
       # form group to put them together
-      html_options[:wrapper] ||= {}
-      html_options[:wrapper][:data] ||= {}
-      html_options[:wrapper][:data][:select_or_new] = true
+      options[:wrapper] ||= {}
+      options[:wrapper][:data] ||= {}
+      options[:wrapper][:data][:select_or_new] = true
       form_group_builder(method, options, html_options) { select + text }
     end
 
