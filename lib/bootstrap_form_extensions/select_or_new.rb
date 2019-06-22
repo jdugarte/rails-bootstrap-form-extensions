@@ -13,6 +13,7 @@ module BootstrapFormExtensions
       choices.unshift [ "Please select", nil ]
       choices.push    [ "New...", 0 ]
       html_options[:class] = merge_css_classes 'form-control', html_options[:class]
+      html_options[:class] = merge_css_classes 'is-invalid', html_options[:class] if inline_error?(method)
       html_options[:style] = 'display: none;' if new_is_selected
       select = self.select_without_bootstrap method, choices, options, html_options
 
@@ -22,8 +23,11 @@ module BootstrapFormExtensions
       icon = content_tag :div, icon, class: 'input-group-append select-or-new-cancel'
       new_method = "new_#{method.to_s.sub(/_id$/, '')}"
       new_field_name = "#{object_name}[#{new_method}]"
-      text = @template.text_field_tag new_field_name, object.try(new_method), class: 'form-control', placeholder: 'New...'
+      text_options = { class: 'form-control', placeholder: 'New...' }
+      text_options[:class] = merge_css_classes 'is-invalid', text_options[:class] if inline_error?(method)
+      text = @template.text_field_tag new_field_name, object.try(new_method), text_options
       text = content_tag :div, text + icon, class: 'input-group', style: (new_is_selected ?  '' : 'display: none;')
+      text << generate_error(method)
 
       # form group to put them together
       options[:wrapper] ||= {}

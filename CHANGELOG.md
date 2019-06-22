@@ -1,3 +1,9 @@
+## 4.0.4 (2019-06-22)
+
+Bugfixes:
+
+  - Fix error message for SelectOrNew  
+
 ## 4.0.3 (2019-04-25)
 
 Features:
